@@ -4,9 +4,9 @@
 [submodule "bundle/ack.vim"]
 	path = bundle/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
-[submodule "bundle/vim-supertab"]
-	path = bundle/vim-supertab
-	url = git://github.com/tsaleh/vim-supertab.git
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = https://github.com/ervandew/supertab.git
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
@@ -40,3 +40,6 @@
 [submodule "bundle/vim-coffee-script"]
 	path = bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "bundle/shady.vim"]
+	path = bundle/shady.vim
+	url = https://github.com/cloudhead/shady.vim.git

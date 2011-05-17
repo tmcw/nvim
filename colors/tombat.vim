@@ -38,20 +38,23 @@ hi SpecialKey	guifg=#808080 guibg=#343434 gui=none
 " Syntax highlighting
 hi Comment 		guifg=#63717C gui=italic
 hi Todo 		guifg=#8f8f8f gui=italic
-hi Constant 	guifg=#E6894B gui=none
-hi String 		guifg=#AADA83 guibg=#2b2b2b gui=italic
+hi Constant 	guifg=#FF8431 gui=none
+hi String 		guifg=#50C9A6 guibg=#2b2b2b gui=italic
 hi Identifier 	guifg=#cae682 gui=none
-hi Function 	guifg=#CA7878 gui=none
-hi Type 		guifg=#83BEE6 gui=none
+hi Function 	guifg=#EB6C6C gui=none
+hi Type 		guifg=#7BC3F3 gui=none
 hi Statement 	guifg=#8ac6f2 gui=none
+hi Repeat       guifg=#5BB4F3 gui=none
 hi Keyword		guifg=#4F9BD1 gui=none
 hi Ignore 				guibg=#1F1F1F guifg=#1F1F1F	gui=none
-hi PreProc 		guifg=#e5786d gui=none
+hi PreProc 		guifg=#FF604E gui=none
 hi Underlined 		guibg=#1F1F1F guifg=#FC4234	gui=underline   
 hi MatchParen 		guibg=#FFA500 guifg=#1F1F1F	gui=none
 hi Number		guifg=#B9DE83 gui=none
 hi Special		guifg=#e7f6da gui=none
-hi WarningMsg	guifg=salmon
+hi javaScriptSpecial guifg=#D6F8B8 gui=none
+hi WarningMsg	guifg=#FF5555
+hi Exception    guifg=#EC6B6B gui=none
 hi Operator     guifg=#FFCBAF gui=none
 hi Delimiter    guifg=#FFA97A guibg=#000000 gui=none
 hi Conditional      guifg=#2A7DD1     guibg=NONE
@@ -72,9 +75,7 @@ hi GlobalConstant   guifg=#bbbb00
 hi link Character       Constant
 hi link Boolean         Constant
 hi link Float           Number
-hi link Repeat          Statement
 hi link Label           Statement
-hi link Exception       Statement
 hi link Include         PreProc
 hi link Define          PreProc
 hi link Macro           PreProc
@@ -109,15 +110,13 @@ hi doxygenSpecialMultilineDesc  gui=NONE guifg=#ad600b   guibg=NONE
 hi doxygenSpecialOnelineDesc    gui=NONE guifg=#ad600b   guibg=NONE
 
 " Custom
-hi Todo         gui=bold guifg=#CEC5A6 guibg=#1F1F1F
+hi Todo         gui=bold guifg=#FFDA53 guibg=#1F1F1F
 
-
-
-		" HTML-specific formatting
-		hi htmlBold									ctermbg=234  ctermfg=252	 cterm=bold
-		hi htmlBoldItalic 					ctermbg=234	 ctermfg=252	 cterm=bold,italic
-		hi htmlBoldUnderline 				ctermbg=234	 ctermfg=252	 cterm=bold,underline
-		hi htmlBoldUnderlineItalic 	ctermbg=234	 ctermfg=252	 cterm=bold,underline,italic
-		hi htmlItalic 							ctermbg=234	 ctermfg=252	 cterm=italic
-		hi htmlUnderline 						ctermbg=234	 ctermfg=252	 cterm=underline
-		hi htmlUnderlineItalic 			ctermbg=234	 ctermfg=252	 cterm=underline,italic
+" HTML-specific formatting
+hi htmlBold									ctermbg=234  ctermfg=252	 cterm=bold
+hi htmlBoldItalic 					ctermbg=234	 ctermfg=252	 cterm=bold,italic
+hi htmlBoldUnderline 				ctermbg=234	 ctermfg=252	 cterm=bold,underline
+hi htmlBoldUnderlineItalic 	ctermbg=234	 ctermfg=252	 cterm=bold,underline,italic
+hi htmlItalic 							ctermbg=234	 ctermfg=252	 cterm=italic
+hi htmlUnderline 						ctermbg=234	 ctermfg=252	 cterm=underline
+hi htmlUnderlineItalic 			ctermbg=234	 ctermfg=252	 cterm=underline,italic
