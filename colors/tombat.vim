@@ -36,20 +36,20 @@ hi Visual		guifg=#f6f3e8 guibg=#444444 gui=none
 hi SpecialKey	guifg=#808080 guibg=#343434 gui=none
 
 " Syntax highlighting
-hi Comment 		guifg=#63717C gui=italic
+hi Comment 		guifg=#404B53 gui=italic
 hi Todo 		guifg=#8f8f8f gui=italic
 hi Constant 	guifg=#FF8431 gui=none
 hi String 		guifg=#50C9A6 guibg=#2b2b2b gui=italic
 hi Identifier 	guifg=#cae682 gui=none
-hi Function 	guifg=#EB6C6C gui=none
+hi Function 	guifg=#5FEE98 gui=none
 hi Type 		guifg=#7BC3F3 gui=none
 hi Statement 	guifg=#8ac6f2 gui=none
 hi Repeat       guifg=#5BB4F3 gui=none
 hi Keyword		guifg=#4F9BD1 gui=none
-hi Ignore 				guibg=#1F1F1F guifg=#1F1F1F	gui=none
+hi Ignore 	    guibg=#1F1F1F guifg=#1F1F1F	gui=none
 hi PreProc 		guifg=#FF604E gui=none
-hi Underlined 		guibg=#1F1F1F guifg=#FC4234	gui=underline   
-hi MatchParen 		guibg=#FFA500 guifg=#1F1F1F	gui=none
+hi Underlined   guibg=#1F1F1F guifg=#FC4234	gui=underline   
+hi MatchParen   guibg=#FFA500 guifg=#1F1F1F	gui=none
 hi Number		guifg=#B9DE83 gui=none
 hi Special		guifg=#e7f6da gui=none
 hi javaScriptSpecial guifg=#D6F8B8 gui=none
@@ -69,8 +69,6 @@ hi Union            guifg=Grey
 hi GlobalVariable   guifg=#666600  
 hi LocalVariable    guifg=#aaa14c  
 hi GlobalConstant   guifg=#bbbb00  
-
-
 
 hi link Character       Constant
 hi link Boolean         Constant

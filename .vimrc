@@ -8,8 +8,16 @@ filetype plugin on
 filetype plugin indent on
 set showmatch
 set ruler
+set number
 set hlsearch
-set nonumber
+
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
+
+" Fast saving
+nmap <leader>w :w!<cr>
 
 " Default indentation
 set tabstop=4
@@ -28,11 +36,12 @@ map <leader>b :NERDTreeFromBookmark
 let NERDTreeIgnore=['\.pyc$', 'CVS', '\~$']
 
 " Colorscheme
-colorscheme tombat
+colorscheme molokai
 if has("gui_running")
-  colorscheme h3rald
+  colorscheme kod
   set go-=T
-  set guifont=M+_1mn:h12
+  set guifont=M+_1mn_light:h12
+  " set guifont=Anonymous_Pro:h12
 endif
 
 " Javascript
@@ -40,14 +49,19 @@ au BufNewFile,BufRead *.bones set filetype=javascript
 au BufNewFile,BufRead *.json set filetype=javascript
 au BufNewFile,BufRead *._ set filetype=html
 au BufNewFile,BufRead *.ejs set filetype=html
-au BufNewFile,BufRead *.js set makeprg=fixjsstyle\ %
+au BufNewFile,BufRead *.js set makeprg=fixjsstyle\ % | set shiftwidth=4 | set tabstop=4
 au BufNewFile,BufRead *.js set errorformat=%-P-----\ FILE\ \ :\ \ %f\ -----,Line\ %l\\,\ E:%n:\ %m,%-Q,%-GFound\ %s,%-GSome\ %s,%-Gfixjsstyle%s,%-Gscript\ can\ %s,%-G
 
 autocmd BufRead,BufNewFile *.mss set syntax=carto
+autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 autocmd BufRead,BufNewFile *.css set tabstop=2 | set shiftwidth=2
 autocmd BufRead,BufNewFile *.html set tabstop=2 | set shiftwidth=2
+
 autocmd BufRead,BufNewFile *.hbs set tabstop=2 | set shiftwidth=2
+" Use the arrows to something usefull
+map <right> :tabnext<cr>
+map <left> :tabp<cr>
 
 augroup hbs
   autocmd BufRead *.hbs set filetype=html
