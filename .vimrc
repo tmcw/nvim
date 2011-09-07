@@ -18,6 +18,8 @@ let g:mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
+nmap <leader>. :tabnext<cr>
+nmap <leader>/ :tabnext<cr>
 
 " Default indentation
 set tabstop=4
@@ -40,7 +42,7 @@ colorscheme molokai
 if has("gui_running")
   colorscheme kod
   set go-=T
-  set guifont=M+_1mn_light:h12
+  set guifont=M+_1mn:h12
   " set guifont=Anonymous_Pro:h12
 endif
 
@@ -67,7 +69,13 @@ augroup hbs
   autocmd BufRead *.hbs set filetype=html
 augroup END
 
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_fugitive')?fugitive#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_fugitive')?fugitive#statusline():''}
+set statusline+=\ %#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+set statusline+=%=%-16(\ %l,%c-%v\ %)%P
+
+let g:syntastic_enable_signs=1
 
 " gist-vim
 " mac
