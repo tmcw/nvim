@@ -40,10 +40,12 @@ let NERDTreeIgnore=['\.pyc$', 'CVS', '\~$']
 " Colorscheme
 colorscheme molokai
 if has("gui_running")
-  colorscheme kod
+  colorscheme xoria256
+  " colorscheme kod
   set go-=T
-  set guifont=M+_1mn:h12
-  " set guifont=Anonymous_Pro:h12
+  set guifont=M+_1m_thin:h14
+  " set guifont=M+_1mn:h12
+  " set guifont=Meslo_LG_L_DZ:h12
 endif
 
 " Javascript
@@ -88,3 +90,5 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+command! BIGMONITOR set guifont=M+_1mn:h12
