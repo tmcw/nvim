@@ -1,3 +1,5 @@
+set t_Co=256
+
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
@@ -53,8 +55,6 @@ au BufNewFile,BufRead *.bones set filetype=javascript
 au BufNewFile,BufRead *.json set filetype=javascript
 au BufNewFile,BufRead *._ set filetype=html
 au BufNewFile,BufRead *.ejs set filetype=html
-au BufNewFile,BufRead *.js set makeprg=fixjsstyle\ % | set shiftwidth=4 | set tabstop=4
-au BufNewFile,BufRead *.js set errorformat=%-P-----\ FILE\ \ :\ \ %f\ -----,Line\ %l\\,\ E:%n:\ %m,%-Q,%-GFound\ %s,%-GSome\ %s,%-Gfixjsstyle%s,%-Gscript\ can\ %s,%-G
 
 autocmd BufRead,BufNewFile *.mss set syntax=carto
 autocmd BufRead,BufNewFile *.md set filetype=markdown
