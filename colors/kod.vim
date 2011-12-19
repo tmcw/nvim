@@ -166,7 +166,7 @@ hi Conditional      guifg=#2A7DD1     guibg=NONE
 " TODO:  - Add colors to the cterm
 hi javaScriptBrowserObjects       guifg=#DBB6D2 ctermfg=182   gui=italic
 
-hi javaScriptDOMObjects           guifg=#DBB6D2 gui=BOLD
+hi javaScriptDOMObjects           guifg=#DBB6D2 gui=italic
 hi javaScriptDOMMethods           guifg=#D4FA9B ctermfg=192
 hi link javaScriptDOMProperties   Keyword
 

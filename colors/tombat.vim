@@ -22,8 +22,8 @@ if version >= 700
 endif
 
 " General colors
-hi Cursor 		guifg=NONE    guibg=#656565 gui=none
-hi CursorLine	guibg=#212628
+hi Cursor 		guifg=NONE    guibg=#ffff00 gui=none
+hi CursorLine	guibg=#000000
 hi Normal 		guifg=#ECE8D8 guibg=#242424 gui=none
 hi NonText 		guifg=#808080 guibg=#303030 gui=none
 hi LineNr 		guifg=#474038 guibg=#000000 gui=none
@@ -36,10 +36,10 @@ hi Visual		guifg=#f6f3e8 guibg=#444444 gui=none
 hi SpecialKey	guifg=#808080 guibg=#343434 gui=none
 
 " Syntax highlighting
-hi Comment 		guifg=#404B53 gui=italic
+hi Comment 		guifg=#A2B0B9 gui=italic
 hi Todo 		guifg=#8f8f8f gui=italic
 hi Constant 	guifg=#FF8431 gui=none
-hi String 		guifg=#50C9A6 guibg=#2b2b2b gui=italic
+hi String 		guifg=#50C9A6 guibg=#1b1b1b gui=italic
 hi Identifier 	guifg=#cae682 gui=none
 hi Function 	guifg=#5FEE98 gui=none
 hi Type 		guifg=#7BC3F3 gui=none

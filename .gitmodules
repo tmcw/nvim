@@ -45,4 +45,7 @@
 	url = https://github.com/cloudhead/shady.vim.git
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
+	url = https://github.com/tmcw/syntastic.git
+[submodule "bundle/omnicppcomplete"]
+	path = bundle/omnicppcomplete
+	url = https://github.com/vim-scripts/OmniCppComplete.git
