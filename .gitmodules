@@ -49,3 +49,6 @@
 [submodule "bundle/omnicppcomplete"]
 	path = bundle/omnicppcomplete
 	url = https://github.com/vim-scripts/OmniCppComplete.git
+[submodule "bundle/TagHighlight"]
+	path = bundle/TagHighlight
+	url = https://github.com/abudden/TagHighlight.git
