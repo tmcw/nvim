@@ -180,15 +180,15 @@ hi javaScriptEventListenerKeyword guifg=#6699CC ctermfg=68
 hi javaScriptFutureKeys guifg=#66c8ef
 
 " Special additions created by mktypes.py are shades of Purple or Grey
-hi Class            guifg=Purple    
-hi DefinedName      guifg=#ee82ee  
-hi EnumerationValue guifg=#c000c0
-hi EnumerationName  guifg=#ff22ff  
-hi Member           guifg=DarkGrey 
-hi Union            guifg=Grey     
-hi GlobalVariable   guifg=#666600  
-hi LocalVariable    guifg=#aaa14c  
-hi GlobalConstant   guifg=#bbbb00  
+hi Class            guifg=#42DCFF
+hi DefinedName      guifg=#42DCFF
+hi EnumerationValue guifg=#42DCFF
+hi EnumerationName  guifg=#42DCFF
+hi Member           guifg=#42DCFF
+hi Union            guifg=#42DCFF
+hi GlobalVariable   guifg=#42DCFF  
+hi LocalVariable    guifg=#42DCFF  
+hi GlobalConstant   guifg=#42DCFF  
 
 hi link Character       Constant
 hi link Boolean         Constant

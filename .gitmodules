@@ -1,6 +1,3 @@
-[submodule "bundle/command-t"]
-	path = bundle/command-t
-	url = https://github.com/wincent/Command-T.git
 [submodule "bundle/ack.vim"]
 	path = bundle/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
@@ -52,3 +49,18 @@
 [submodule "bundle/TagHighlight"]
 	path = bundle/TagHighlight
 	url = https://github.com/abudden/TagHighlight.git
+[submodule "bundle/vim-nodejs-errorformat"]
+	path = bundle/vim-nodejs-errorformat
+	url = https://github.com/felixge/vim-nodejs-errorformat.git
+[submodule "bundle/vim-node"]
+	path = bundle/vim-node
+	url = https://github.com/guileen/vim-node.git
+[submodule "bundle/mango.vim"]
+	path = bundle/mango.vim
+	url = https://github.com/goatslacker/mango.vim.git
+[submodule "bundle/conque-shell"]
+	path = bundle/conque-shell
+	url = https://github.com/vim-scripts/Conque-Shell.git
+[submodule "bundle/ctrlp"]
+	path = bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git

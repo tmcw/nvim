@@ -48,13 +48,14 @@ if has("gui_running")
   if strftime("%u", localtime()) > 5
       colorscheme xoria256
   else
-      colorscheme kod
+      colorscheme odd
   endif
   set go-=T
-  set guifont=M+_1m_thin:h14
+  set guifont=M+_1m_light:h14
   " set guifont=M+_1mn:h12
   " set guifont=Meslo_LG_L_DZ:h12
 endif
+colorscheme kod
 
 " Javascript
 au BufNewFile,BufRead *.bones set filetype=javascript
