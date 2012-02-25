@@ -38,6 +38,8 @@ set shell=/bin/bash
 " you can autocomplete the name of a bookmark
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 map <leader>b :NERDTreeFromBookmark
+let NERDTreeDirArrows=1
+let NERDTreeMinimalUI=1
 let NERDTreeIgnore=['\.pyc$', 'CVS', '\~$']
 
 " Colorscheme
@@ -46,13 +48,14 @@ if has("gui_running")
   " colorscheme tombat
   " colorscheme xoria256
   if strftime("%u", localtime()) > 5
-      colorscheme xoria256
+      colorscheme molokai
   else
       colorscheme odd
   endif
   set go-=T
-  set guifont=M+_1m_light:h14
-  " set guifont=M+_1mn:h12
+  " set guifont=M+_1m_light:h14
+  set guifont=M+_1mn:h12
+  set guifont=M+_2m:h12
   " set guifont=Meslo_LG_L_DZ:h12
 endif
 colorscheme kod
@@ -110,3 +113,28 @@ nnoremap <leader>gph :Git push origin gh-pages<cr>
 
 au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set tags+=~/.vim/libtags/libstd
 au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
+
+set backupdir=~/tmp
+
+" let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.o$\|\.os$'    " Any platform
+" FocusMode
+function! ToggleFocusMode()
+  if (&foldcolumn != 12)
+    colorscheme ir_black "re-call your colorscheme
+    set laststatus=0
+    set foldcolumn=12
+    set noruler
+    set nonumber
+    hi FoldColumn ctermbg=none
+    hi LineNr ctermfg=0 ctermbg=none
+    hi NonText ctermfg=0
+  else
+    set laststatus=2
+    set foldcolumn=0
+    set ruler
+    set number
+    colorscheme molokai "re-call your colorscheme
+  endif
+endfunc
+" nnoremap <F1> :call ToggleFocusMode()<cr>
+command! FM call ToggleFocusMode()
