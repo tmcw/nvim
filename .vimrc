@@ -11,6 +11,7 @@ filetype plugin indent on
 set showmatch
 set ruler
 set number
+set nowrap
 set hlsearch
 set cursorline
 
@@ -50,15 +51,12 @@ if has("gui_running")
   if strftime("%u", localtime()) > 5
       colorscheme molokai
   else
-      colorscheme odd
+      colorscheme molokai
   endif
   set go-=T
-  " set guifont=M+_1m_light:h14
-  set guifont=M+_1mn:h12
-  set guifont=M+_2m:h12
+  set guifont=M+_1m_light:h14
   " set guifont=Meslo_LG_L_DZ:h12
 endif
-colorscheme kod
 
 " Javascript
 au BufNewFile,BufRead *.bones set filetype=javascript
