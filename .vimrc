@@ -10,7 +10,7 @@ filetype plugin on
 filetype plugin indent on
 set showmatch
 set ruler
-set number
+" set number
 set nowrap
 set hlsearch
 set cursorline
@@ -48,13 +48,9 @@ colorscheme molokai
 if has("gui_running")
   " colorscheme tombat
   " colorscheme xoria256
-  if strftime("%u", localtime()) > 5
-      colorscheme molokai
-  else
-      colorscheme molokai
-  endif
+  colorscheme molokai
   set go-=T
-  set guifont=M+_1m_light:h14
+  set guifont=M+_1m_medium:h14
   " set guifont=Meslo_LG_L_DZ:h12
 endif
 
@@ -136,3 +132,62 @@ function! ToggleFocusMode()
 endfunc
 " nnoremap <F1> :call ToggleFocusMode()<cr>
 command! FM call ToggleFocusMode()
+
+
+
+function HtmlEscape()
+  silent s/&/\&amp;/eg
+  silent s/</\&lt;/eg
+  silent s/>/\&gt;/eg
+endfunction
+
+function HtmlUnEscape()
+  silent s/&lt;/</eg
+  silent s/&gt;/>/eg
+  silent s/&amp;/\&/eg
+endfunction
+
+map <silent> <c-h> :call HtmlEscape()<CR>
+map <silent> <c-u> :call HtmlUnEscape()<CR>
+
+function! ToggleMinimap()
+
+    if exists("s:isMini") && s:isMini == 0
+        let s:isMini = 1
+    else
+        let s:isMini = 0
+    end
+
+    if (s:isMini == 0)
+        " don't change window size
+        let c = &columns * 12
+        let l = &lines * 12
+        exe "set columns=" . c
+        exe "set lines=" . l
+
+        " make font small
+        set guifont=M+_1m_medium:h4
+
+        no j 10j
+        no k 10k
+
+        nmap <LeftRelease> :ToggleMinimap<CR> 
+        nmap <space> :ToggleMinimap<CR>
+
+    else
+
+        set guifont=M+_1m_medium:h14
+        unmap j
+        unmap k
+        unmap <LeftRelease>
+        unmap <space>
+
+        exe ":normal 0"
+
+    endif
+
+endfunction
+
+command! ToggleMinimap call ToggleMinimap()
+
+nmap <C-M> :ToggleMinimap<CR>
