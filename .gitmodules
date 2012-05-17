@@ -64,3 +64,12 @@
 [submodule "bundle/ctrlp"]
 	path = bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
+[submodule "bundle/vim-scala"]
+	path = bundle/vim-scala
+	url = https://github.com/derekwyatt/vim-scala.git
+[submodule "bundle/vim-rhubarb"]
+	path = bundle/vim-rhubarb
+	url = git://github.com/tpope/vim-rhubarb.git
+[submodule "bundle/ck.vim"]
+	path = bundle/ck.vim
+	url = https://github.com/vim-scripts/ck.vim.git
