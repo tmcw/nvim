@@ -23,7 +23,7 @@ endif
 hi Cursor 		guifg=NONE    guibg=#444444 gui=none
 hi CursorLine	guibg=#101010
 hi Normal 		guifg=#eeeeee guibg=#1a1a1a gui=none
-hi NonText 		guifg=#808080 guibg=#303030 gui=none
+hi link NonText Normal
 hi LineNr 		guifg=#333333 guibg=#131313 gui=none
 hi StatusLine 	guifg=#f6f3e8 guibg=#434343 gui=italic
 hi StatusLineNC guifg=#857b6f guibg=#000000 gui=none
@@ -37,10 +37,7 @@ hi SpecialKey	guifg=#808080 guibg=#343434 gui=none
 hi Comment 		guifg=#666666 gui=italic
 hi Todo 		guifg=#8f8f8f gui=italic
 hi Constant 	guifg=#ffc6e3 gui=none
-hi String 		guifg=#ffc6e3 gui=italic
-hi Identifier 	guifg=#cae682 gui=none
-hi Type 		guifg=#f1f8b9 gui=none
-hi Statement 	guifg=#8ac6f2 gui=none
+
 hi Repeat       guifg=#5BB4F3 gui=none
 hi PreProc 		guifg=#efcc92 gui=none
 hi MatchParen   guibg=#FFA500 guifg=#1F1F1F	gui=none
@@ -49,18 +46,24 @@ hi MatchParen   guibg=#FFA500 guifg=#1F1F1F	gui=none
 hi Underlined   guibg=#1F1F1F guifg=#FC4234	gui=underline
 hi Ignore 	    guibg=#1F1F1F guifg=#1F1F1F	gui=none
 
-hi Keyword 		guifg=#d1e4dc gui=none
-hi Function		guifg=#66c8ef gui=none
-hi Special		guifg=#66c8ef gui=none
+hi Function		guifg=#F0677E gui=none
 
-hi javaScriptFuncName 	guifg=#85FFDF  guibg=#1F2B31 gui=none
+hi link String Constant
+hi link Identifier Constant
+hi link Type Constant
+hi link Statement Constant
 
-hi javaScriptSpecial guifg=#D6F8B8 gui=none
+hi link Special Function
+hi link Keyword Function
+
+hi link javaScriptFuncName Identifier
+
+hi link javaScriptSpecial Keyword
 hi WarningMsg	guifg=#FF5555
 hi Exception    guifg=#EC6B6B gui=none
-hi Operator     guifg=#FFCBAF gui=none
-hi Delimiter    guifg=#FFA97A guibg=#000000 gui=none
-hi Conditional      guifg=#2A7DD1     guibg=NONE
+hi link Operator Function
+hi link Delimiter Function
+hi link Conditional Function
 
 " Javascript
 hi link javaScriptBrowserObjects Constant
