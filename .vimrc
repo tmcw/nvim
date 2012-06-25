@@ -10,7 +10,7 @@ filetype plugin on
 filetype plugin indent on
 set showmatch
 set ruler
-" set number
+set number
 set nowrap
 set hlsearch
 set cursorline
@@ -50,30 +50,20 @@ if has("gui_running")
   " colorscheme xoria256
   colorscheme molokai
   set go-=T
-  set guifont=M+_1m_medium:h14
+  set guifont=M+_1m_thin:h13
+  set noballooneval
   " set guifont=Meslo_LG_L_DZ:h12
+else
+  set mouse=a
 endif
 
 " Javascript
 au BufNewFile,BufRead *.bones set filetype=javascript
 au BufNewFile,BufRead *.json set filetype=javascript
 au BufNewFile,BufRead *._ set filetype=html
-au BufNewFile,BufRead *.ejs set filetype=html
 
 autocmd BufRead,BufNewFile *.mss set syntax=carto
 autocmd BufRead,BufNewFile *.md set filetype=markdown
-
-autocmd BufRead,BufNewFile *.css set tabstop=2 | set shiftwidth=2
-autocmd BufRead,BufNewFile *.html set tabstop=2 | set shiftwidth=2
-
-autocmd BufRead,BufNewFile *.hbs set tabstop=2 | set shiftwidth=2
-" Use the arrows to something usefull
-map <right> :tabnext<cr>
-map <left> :tabp<cr>
-
-augroup filetype
-    au! BufRead,BufNewFile *.proto setfiletype proto
-augroup end
 
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 set statusline+=\ %#warningmsg#
@@ -84,8 +74,6 @@ set statusline+=%=%-16(\ %l,%c-%v\ %)%P
 let g:syntastic_enable_signs=1
 let g:syntastic_disabled_filetypes = ['cpp']
 
-" gist-vim
-" mac
 let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 
@@ -96,10 +84,6 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-command! BIGMONITOR set guifont=M+_1mn:h12
-command! GPP ! git push origin master
-command! GPH ! git push origin gh-pages
-
 nnoremap <leader>gci :Gcommit<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gpp :Git push origin master<cr>
@@ -108,86 +92,32 @@ nnoremap <leader>gph :Git push origin gh-pages<cr>
 au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set tags+=~/.vim/libtags/libstd
 au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 
-set backupdir=~/tmp
+set backupdir=/Users/tmcw/tmp/
+set directory=/Users/tmcw/tmp/
+set nobackup
+set nowritebackup
 
-" let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.o$\|\.os$'    " Any platform
-" FocusMode
-function! ToggleFocusMode()
-  if (&foldcolumn != 12)
-    colorscheme ir_black "re-call your colorscheme
-    set laststatus=0
-    set foldcolumn=12
-    set noruler
-    set nonumber
-    hi FoldColumn ctermbg=none
-    hi LineNr ctermfg=0 ctermbg=none
-    hi NonText ctermfg=0
-  else
-    set laststatus=2
-    set foldcolumn=0
-    set ruler
-    set number
-    colorscheme molokai "re-call your colorscheme
-  endif
-endfunc
-" nnoremap <F1> :call ToggleFocusMode()<cr>
-command! FM call ToggleFocusMode()
-
-
-
-function HtmlEscape()
+function! HtmlEscape()
   silent s/&/\&amp;/eg
   silent s/</\&lt;/eg
   silent s/>/\&gt;/eg
 endfunction
 
-function HtmlUnEscape()
+function! HtmlUnEscape()
   silent s/&lt;/</eg
   silent s/&gt;/>/eg
   silent s/&amp;/\&/eg
 endfunction
 
-map <silent> <c-h> :call HtmlEscape()<CR>
-map <silent> <c-u> :call HtmlUnEscape()<CR>
+noremap <silent> <c-h> :call HtmlEscape()<CR>
+noremap <silent> <c-u> :call HtmlUnEscape()<CR>
 
-function! ToggleMinimap()
-
-    if exists("s:isMini") && s:isMini == 0
-        let s:isMini = 1
-    else
-        let s:isMini = 0
-    end
-
-    if (s:isMini == 0)
-        " don't change window size
-        let c = &columns * 12
-        let l = &lines * 12
-        exe "set columns=" . c
-        exe "set lines=" . l
-
-        " make font small
-        set guifont=M+_1m_medium:h4
-
-        no j 10j
-        no k 10k
-
-        nmap <LeftRelease> :ToggleMinimap<CR> 
-        nmap <space> :ToggleMinimap<CR>
-
-    else
-
-        set guifont=M+_1m_medium:h14
-        unmap j
-        unmap k
-        unmap <LeftRelease>
-        unmap <space>
-
-        exe ":normal 0"
-
-    endif
-
-endfunction
-
-command! ToggleMinimap call ToggleMinimap()
-
-nmap <C-M> :ToggleMinimap<CR>
+" Show syntax highlighting groups for word under cursor
+function! <SID>SynStack ()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+noremap   <F3> :call <SID>SynStack()<CR>
+inoremap  <F3> :call <SID>SynStack()<CR>
