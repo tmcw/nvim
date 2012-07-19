@@ -25,18 +25,12 @@
 [submodule "bundle/vim-unimpaired"]
 	path = bundle/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
-[submodule "bundle/vim-taglist-plus"]
-	path = bundle/vim-taglist-plus
-	url = https://github.com/int3/vim-taglist-plus.git
 [submodule "bundle/shady.vim"]
 	path = bundle/shady.vim
 	url = https://github.com/cloudhead/shady.vim.git
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = https://github.com/tmcw/syntastic.git
-[submodule "bundle/TagHighlight"]
-	path = bundle/TagHighlight
-	url = https://github.com/abudden/TagHighlight.git
 [submodule "bundle/ctrlp"]
 	path = bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
