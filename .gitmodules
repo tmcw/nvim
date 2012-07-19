@@ -25,48 +25,21 @@
 [submodule "bundle/vim-unimpaired"]
 	path = bundle/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
-[submodule "bundle/jade.vim"]
-	path = bundle/jade.vim
-	url = https://github.com/vim-scripts/jade.vim.git
 [submodule "bundle/vim-taglist-plus"]
 	path = bundle/vim-taglist-plus
 	url = https://github.com/int3/vim-taglist-plus.git
-[submodule "bundle/vim-colors-solarized"]
-	path = bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "bundle/vim-coffee-script"]
-	path = bundle/vim-coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
 [submodule "bundle/shady.vim"]
 	path = bundle/shady.vim
 	url = https://github.com/cloudhead/shady.vim.git
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = https://github.com/tmcw/syntastic.git
-[submodule "bundle/omnicppcomplete"]
-	path = bundle/omnicppcomplete
-	url = https://github.com/vim-scripts/OmniCppComplete.git
 [submodule "bundle/TagHighlight"]
 	path = bundle/TagHighlight
 	url = https://github.com/abudden/TagHighlight.git
-[submodule "bundle/vim-nodejs-errorformat"]
-	path = bundle/vim-nodejs-errorformat
-	url = https://github.com/felixge/vim-nodejs-errorformat.git
-[submodule "bundle/vim-node"]
-	path = bundle/vim-node
-	url = https://github.com/guileen/vim-node.git
-[submodule "bundle/mango.vim"]
-	path = bundle/mango.vim
-	url = https://github.com/goatslacker/mango.vim.git
-[submodule "bundle/conque-shell"]
-	path = bundle/conque-shell
-	url = https://github.com/vim-scripts/Conque-Shell.git
 [submodule "bundle/ctrlp"]
 	path = bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
-[submodule "bundle/vim-scala"]
-	path = bundle/vim-scala
-	url = https://github.com/derekwyatt/vim-scala.git
 [submodule "bundle/vim-rhubarb"]
 	path = bundle/vim-rhubarb
 	url = git://github.com/tpope/vim-rhubarb.git
