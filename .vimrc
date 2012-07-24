@@ -1,13 +1,8 @@
 set t_Co=256
 
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
-
+call pathogen#infect()
 set nocompatible
-
 syntax enable
-filetype on
-filetype plugin on
 filetype plugin indent on
 
 set showmatch
