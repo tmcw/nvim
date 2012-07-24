@@ -33,7 +33,7 @@ if has("gui_running")
 	hi IncSearch 			guibg=#FF9E16	guifg=#000000	gui=none
 
 	" Code Highlighting
-	hi Comment				guibg=#1F1F1F guifg=#696567 gui=none
+	hi Comment				guibg=#1F1F1F guifg=#B88A00 gui=none
 	hi Constant				guibg=#1F1F1F	guifg=#6DF584	gui=none
 	hi Title					guibg=#1F1F1F	guifg=#6DF584	gui=bold	 
 	hi String 				guibg=#1F1F1F guifg=#FFB539	gui=none

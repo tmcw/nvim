@@ -10,9 +10,6 @@
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
-[submodule "bundle/vim-javascript"]
-	path = bundle/vim-javascript
-	url = https://github.com/tmcw/vim-javascript.git
 [submodule "bundle/vim-matchit"]
 	path = bundle/vim-matchit
 	url = https://github.com/edsono/vim-matchit.git
@@ -28,9 +25,6 @@
 [submodule "bundle/shady.vim"]
 	path = bundle/shady.vim
 	url = https://github.com/cloudhead/shady.vim.git
-[submodule "bundle/syntastic"]
-	path = bundle/syntastic
-	url = https://github.com/tmcw/syntastic.git
 [submodule "bundle/ctrlp"]
 	path = bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
@@ -40,3 +34,6 @@
 [submodule "bundle/ck.vim"]
 	path = bundle/ck.vim
 	url = https://github.com/vim-scripts/ck.vim.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
