@@ -10,6 +10,7 @@ set ruler
 set number
 set nowrap
 set hlsearch
+set colorcolumn=80
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -32,13 +33,13 @@ set expandtab
 " \b will enter :NERDTreeFromBookmark and then
 " you can autocomplete the name of a bookmark
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
-map <leader>b :NERDTreeFromBookmark
 let NERDTreeDirArrows=1
 let NERDTreeMinimalUI=1
 let NERDTreeIgnore=['\.pyc$', 'CVS', '\~$']
 
 " Colorscheme
-colorscheme molokai
+set background=dark
+colorscheme mango
 if has("gui_running")
   " colorscheme tombat
   " colorscheme xoria256
@@ -60,8 +61,6 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 set statusline+=\ %#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 let g:syntastic_enable_signs=1
 let g:syntastic_disabled_filetypes = ['cpp']
 
@@ -75,8 +74,8 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-nnoremap <leader>gpp :Git push origin master<cr>
-nnoremap <leader>gph :Git push origin gh-pages<cr>
+nnoremap <leader>gpp :Git push origin master --tags<cr>
+nnoremap <leader>gph :Git push origin gh-pages --tags<cr>
 
 set backupdir=/Users/tmcw/tmp/
 set directory=/Users/tmcw/tmp/
@@ -107,3 +106,6 @@ function! <SID>SynStack ()
 endfunc
 noremap   <F3> :call <SID>SynStack()<CR>
 inoremap  <F3> :call <SID>SynStack()<CR>
+
+" automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
