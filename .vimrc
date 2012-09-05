@@ -39,10 +39,8 @@ let NERDTreeIgnore=['\.pyc$', 'CVS', '\~$']
 
 " Colorscheme
 set background=dark
-colorscheme mango
+colorscheme Tomorrow-Night
 if has("gui_running")
-  " colorscheme tombat
-  " colorscheme xoria256
   set go-=T
   set guifont=M+_1m:h13
   set noballooneval
@@ -82,6 +80,16 @@ set directory=/Users/tmcw/tmp/
 set nobackup
 set nowritebackup
 
+" Settings for VimClojure
+let g:clj_highlight_builtins=1      " Highlight Clojure's builtins
+let g:clj_paren_rainbow=1           " Rainbow parentheses'!
+let vimclojure#FuzzyIndent=1
+let vimclojure#HighlightBuiltins=1
+let vimclojure#HighlightContrib=1
+let vimclojure#DynamicHighlighting=1
+let vimclojure#ParenRainbow=1
+let vimclojure#WantNailgun = 1
+
 function! HtmlEscape()
   silent s/&/\&amp;/eg
   silent s/</\&lt;/eg
@@ -97,6 +105,8 @@ endfunction
 noremap <silent> <c-h> :call HtmlEscape()<CR>
 noremap <silent> <c-u> :call HtmlUnEscape()<CR>
 
+nnoremap <silent> <c-o> :CtrlPMRU<Cr>
+
 " Show syntax highlighting groups for word under cursor
 function! <SID>SynStack ()
   if !exists("*synstack")
@@ -106,6 +116,20 @@ function! <SID>SynStack ()
 endfunc
 noremap   <F3> :call <SID>SynStack()<CR>
 inoremap  <F3> :call <SID>SynStack()<CR>
+
+function! DFW()
+    colorscheme Tomorrow
+    set background=light
+    set lines=40 columns=100           " size of the editable area
+    set fuoptions=background:#00f5f6f6 " macvim specific setting for editor's background color
+    set guioptions-=r                  " remove right scrollbar
+    set laststatus=0                   " don't show status line
+    set noruler                        " don't show ruler
+    set fullscreen                     " go to fullscreen editing mode
+    set linebreak                      " break the lines on words
+    set colorcolumn=
+    set nonumber
+endfunction
 
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
