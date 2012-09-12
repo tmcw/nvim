@@ -46,3 +46,6 @@
 [submodule "bundle/webapi-vim"]
 	path = bundle/webapi-vim
 	url = https://github.com/mattn/webapi-vim.git
+[submodule "bundle/gundu.vim"]
+	path = bundle/gundu.vim
+	url = https://github.com/sjl/gundo.vim.git

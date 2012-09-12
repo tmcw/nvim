@@ -33,6 +33,7 @@ set expandtab
 " \b will enter :NERDTreeFromBookmark and then
 " you can autocomplete the name of a bookmark
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
+map <leader>gu :GundoToggle<CR>
 let NERDTreeDirArrows=1
 let NERDTreeMinimalUI=1
 let NERDTreeIgnore=['\.pyc$', 'CVS', '\~$']
@@ -49,7 +50,6 @@ else
 endif
 
 " Javascript
-au BufNewFile,BufRead *.bones set filetype=javascript
 au BufNewFile,BufRead *.json set filetype=javascript
 au BufNewFile,BufRead *._ set filetype=html
 
@@ -130,6 +130,9 @@ function! DFW()
     set colorcolumn=
     set nonumber
 endfunction
+
+let g:ctrlp_extensions = ['line']
+let g:ctrlp_user_command = 'mdfind -onlyin %s file'
 
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
