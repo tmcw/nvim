@@ -1,4 +1,5 @@
 set t_Co=256
+set vb
 
 call pathogen#infect()
 set nocompatible
@@ -32,7 +33,7 @@ set expandtab
 " \d will hide/show
 " \b will enter :NERDTreeFromBookmark and then
 " you can autocomplete the name of a bookmark
-map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
+nnoremap <leader>d :NERDTreeToggle<cr>
 map <leader>gu :GundoToggle<CR>
 let NERDTreeDirArrows=1
 let NERDTreeMinimalUI=1
@@ -132,7 +133,7 @@ function! DFW()
 endfunction
 
 let g:ctrlp_extensions = ['line']
-let g:ctrlp_user_command = 'mdfind -onlyin %s file'
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif

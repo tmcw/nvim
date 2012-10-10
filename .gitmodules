@@ -49,3 +49,9 @@
 [submodule "bundle/gundu.vim"]
 	path = bundle/gundu.vim
 	url = https://github.com/sjl/gundo.vim.git
+[submodule "bundle/vim-coffee-script"]
+	path = bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "bundle/vim-golang"]
+	path = bundle/vim-golang
+	url = https://github.com/jnwhiteh/vim-golang.git
