@@ -13,13 +13,7 @@ set nowrap
 set hlsearch
 set colorcolumn=80
 
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
-
 " Fast saving
-nmap <leader>w :w!<cr>
 nmap <leader>. :tabnext<cr>
 nmap <leader>/ :tabnext<cr>
 
@@ -28,6 +22,13 @@ set tabstop=4
 set shiftwidth=4
 set autoindent
 set expandtab
+let g:neocomplcache_enable_at_startup = 1
+
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 "SECTION: NERDTree Customization
 " \d will hide/show
@@ -44,14 +45,19 @@ set background=dark
 colorscheme Tomorrow-Night
 if has("gui_running")
   set go-=T
-  set guifont=M+_1m:h13
+  set guifont=M+_1m_light:h13
   set noballooneval
 else
   set mouse=a
 endif
 
 " Javascript
-au BufNewFile,BufRead *.json set filetype=javascript
+autocmd BufNewFile,BufRead *.json set filetype=javascript
+autocmd BufRead,BufNewFile *.mml set syntax=javascript
+autocmd BufRead,BufNewFile *.bones set syntax=javascript
+
+autocmd BufRead,BufNewFile *.result set syntax=xml
+
 au BufNewFile,BufRead *._ set filetype=html
 
 autocmd BufRead,BufNewFile *.mss set syntax=carto
@@ -73,23 +79,13 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-nnoremap <leader>gpp :Git push origin master --tags<cr>
-nnoremap <leader>gph :Git push origin gh-pages --tags<cr>
+nnoremap <leader>w :! git pull origin master && git push origin master --tags<cr>
+nnoremap <leader>e :! git pull origin gh-pages && git push origin gh-pages --tags<cr>
 
 set backupdir=/Users/tmcw/tmp/
 set directory=/Users/tmcw/tmp/
 set nobackup
 set nowritebackup
-
-" Settings for VimClojure
-let g:clj_highlight_builtins=1      " Highlight Clojure's builtins
-let g:clj_paren_rainbow=1           " Rainbow parentheses'!
-let vimclojure#FuzzyIndent=1
-let vimclojure#HighlightBuiltins=1
-let vimclojure#HighlightContrib=1
-let vimclojure#DynamicHighlighting=1
-let vimclojure#ParenRainbow=1
-let vimclojure#WantNailgun = 1
 
 function! HtmlEscape()
   silent s/&/\&amp;/eg
