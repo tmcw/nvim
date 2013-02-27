@@ -1,0 +1,11 @@
+description
+This plugin looks for hex codes of the format #ffffff or #fff and toggles a highlight in that color. It is useful for editing colorschemes, and generally any config file dealing with colors.
+
+Only works with the graphical version of vim.
+ 
+install details
+Put hexHighlight.vim into your .vim/plugins directory, or simply :source the file.
+
+The default keymapping to toggle hex code highlighting is <Leader>F2, and the default <Leader> bind is "\", so \F2 should work by default.
+
+The toggle can be called manually by :call HexHighlight()

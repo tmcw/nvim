@@ -39,36 +39,39 @@ hi SpecialKey	guifg=#808080 guibg=#343434 gui=none
 hi Comment 		guifg=#A2B0B9 gui=italic
 hi Todo 		guifg=#8f8f8f gui=italic
 hi Constant 	guifg=#FF8431 gui=none
-hi String 		guifg=#50C9A6 guibg=#1b1b1b gui=italic
 hi Identifier 	guifg=#cae682 gui=none
 hi Function 	guifg=#5FEE98 gui=none
 hi Type 		guifg=#7BC3F3 gui=none
-hi Statement 	guifg=#8ac6f2 gui=none
+hi Statement 	guifg=#9BE78C gui=none
 hi Repeat       guifg=#5BB4F3 gui=none
 hi Keyword		guifg=#4F9BD1 gui=none
 hi Ignore 	    guibg=#1F1F1F guifg=#1F1F1F	gui=none
 hi PreProc 		guifg=#FF604E gui=none
-hi Underlined   guibg=#1F1F1F guifg=#FC4234	gui=underline   
+hi Underlined   guibg=#1F1F1F guifg=#FC4234	gui=underline
 hi MatchParen   guibg=#FFA500 guifg=#1F1F1F	gui=none
-hi Number		guifg=#B9DE83 gui=none
+hi Value		guifg=#75C3FF gui=none
 hi Special		guifg=#e7f6da gui=none
+hi Language		guifg=#FFA5D8 gui=none
+hi Structure	guifg=#C2A3B4 gui=none
 hi javaScriptSpecial guifg=#D6F8B8 gui=none
 hi WarningMsg	guifg=#FF5555
 hi Exception    guifg=#EC6B6B gui=none
-hi Operator     guifg=#FFCBAF gui=none
-hi Delimiter    guifg=#FFA97A guibg=#000000 gui=none
+hi link Operator Structure
+hi link Delimiter Structure
 hi Conditional      guifg=#2A7DD1     guibg=NONE
 
+hi link String Value
+
 " Special additions created by mktypes.py are shades of Purple or Grey
-hi Class            guifg=Purple    
-hi DefinedName      guifg=#ee82ee  
+hi Class            guifg=Purple
+hi DefinedName      guifg=#ee82ee
 hi EnumerationValue guifg=#c000c0
-hi EnumerationName  guifg=#ff22ff  
-hi Member           guifg=DarkGrey 
-hi Union            guifg=Grey     
-hi GlobalVariable   guifg=#666600  
-hi LocalVariable    guifg=#aaa14c  
-hi GlobalConstant   guifg=#bbbb00  
+hi EnumerationName  guifg=#ff22ff
+hi Member           guifg=DarkGrey
+hi Union            guifg=Grey
+hi GlobalVariable   guifg=#666600
+hi LocalVariable    guifg=#aaa14c
+hi GlobalConstant   guifg=#bbbb00
 
 hi link Character       Constant
 hi link Boolean         Constant
@@ -118,3 +121,46 @@ hi htmlBoldUnderlineItalic 	ctermbg=234	 ctermfg=252	 cterm=bold,underline,itali
 hi htmlItalic 							ctermbg=234	 ctermfg=252	 cterm=italic
 hi htmlUnderline 						ctermbg=234	 ctermfg=252	 cterm=underline
 hi htmlUnderlineItalic 			ctermbg=234	 ctermfg=252	 cterm=underline,italic
+
+" css
+hi link cssImportant            Error
+hi link cssPseudoClass          Tag
+hi link cssPseudoClassId        Tag
+hi link cssStringQ              Boolean
+hi link cssAttr                 Boolean
+hi link cssFontAttr             Boolean
+hi link cssCommonAttr           Boolean
+hi link cssColor                Boolean
+hi link cssDefinition           Boolean
+hi link cssStringQQ             Boolean
+hi link cssProp                 Define
+hi link cssTextProp             Define
+hi link cssFontProp             Define
+hi link cssBoxProp              Define
+hi link cssRenderProp           Define
+hi link cssColorProp            Define
+hi link cssTableProp            Define
+hi link cssUiProp               Define
+hi link cssGeneratedContentProp Define
+
+" Javascript
+hi link javaScriptParen        Structure
+hi link javaScriptBlock        Structure
+hi link javaScriptRegexpString  Value
+hi link javaScriptPrototype     Type        " prototype
+hi link javaScriptIdentifier    Identifier  " var this
+hi link javaScriptLabel         Label       " length
+hi link javaScriptGlobalObjects Class
+hi link javaScriptFunction      Language
+hi link javaScriptSource        Language   " import export
+hi link javaScriptOperator      Language   " delete new in instanceof let typeof
+hi link javaScriptThis      Language   " delete new in instanceof let typeof
+hi link javaScriptType          Value        " const undefined void yield
+hi link javaScriptNumber        Value
+hi link javaScriptBoolean       Value   " true false
+hi link javaScriptNull          Value   " null
+hi link javaScriptConditional   Language   " if else
+hi link javaScriptRepeat        Language   " do while for
+hi link javaScriptBranch        Language   " break continue switch case default return
+hi link javaScriptStatement     Language   " try catch throw with finally
+hi link javascriptEnvComment    Comment     " executable
