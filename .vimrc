@@ -16,6 +16,8 @@ set tabstop=4
 set shiftwidth=4
 set autoindent
 set expandtab
+
+" never ever write temporary files into file directories
 set backupdir=/Users/tmcw/tmp/
 set directory=/Users/tmcw/tmp/
 set nobackup
@@ -26,13 +28,14 @@ nmap <leader>/ :tabnext<cr>
 
 inoremap <expr><TAB>  pumvisible() ? "<C-n>" : "<TAB>"
 nnoremap <leader>d :NERDTreeToggle<cr>
-nnoremap <leader>t :TagbarToggle<cr>
 nnoremap <leader>a :Ack 
 
 let NERDTreeDirArrows=1
 let NERDTreeMinimalUI=1
 let NERDTreeIgnore=['\.pyc$', 'CVS', '\~$']
 let NERDTreeHijackNetrw=1
+
+highlight clear SignColumn
 
 set background=dark
 colorscheme tombat
@@ -54,9 +57,7 @@ autocmd BufNewFile,BufRead *.json set filetype=javascript
 autocmd BufRead,BufNewFile *.mml set syntax=javascript
 autocmd BufRead,BufNewFile *.bones set syntax=javascript
 autocmd BufRead,BufNewFile *.result set syntax=xml
-autocmd BufRead,BufNewFile *.mss set syntax=carto
 autocmd BufRead,BufNewFile *.md set filetype=markdown
-
 au BufNewFile,BufRead *._ set filetype=html
 
 " Show syntax highlighting groups for word under cursor
@@ -68,6 +69,7 @@ function! <SID>SynStack()
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
+" Statusline helper
 if has("eval")
 function! SL(function)
   if exists('*'.a:function)
@@ -99,9 +101,6 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 map <leader>gu :GundoToggle<CR>
-nnoremap <leader>w :! git pull origin master && git push origin master --tags<cr>
-nnoremap <leader>e :! git pull origin gh-pages && git push origin gh-pages --tags<cr>
-vnoremap <C-E> ! node<cr>
 
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif

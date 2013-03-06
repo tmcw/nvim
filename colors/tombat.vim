@@ -1,5 +1,4 @@
 " Maintainer:	Tom MacWright (macwright@gmail.com)
-" Maintainer:	Lars H. Nielsen (dengmao@gmail.com)
 " Last Change:	January 22 2007
 
 set background=dark
@@ -24,11 +23,17 @@ endif
 " General colors
 hi Cursor 		guifg=NONE    guibg=#ffff00 gui=none
 hi CursorLine	guibg=#000000
-hi Normal 		guifg=#ECE8D8 guibg=#242424 gui=none
 hi NonText 		guifg=#808080 guibg=#303030 gui=none
-hi LineNr 		guifg=#474038 guibg=#000000 gui=none
+
+" right to left
+" http://tristen.ca/hcl-picker/#/hlc/6/0.71/1C2026/4C5663
+hi Normal 		guifg=#ECE8D8 guibg=#1C2026 gui=none
+hi LineNr 		guifg=#424A56 guibg=#252A31 gui=none
+hi SignColumn	guifg=#474038 guibg=#2E343D gui=none
+
 hi StatusLine 	guifg=#f6f3e8 guibg=#000000 gui=italic
 hi StatusLineNC guifg=#857b6f guibg=#000000 gui=none
+
 hi VertSplit 	guifg=#444444 guibg=#444444 gui=none
 hi Folded 		guibg=#384048 guifg=#a0a8b0 gui=none
 hi Title		guifg=#f6f3e8 guibg=NONE	gui=bold
@@ -38,11 +43,14 @@ hi SpecialKey	guifg=#808080 guibg=#343434 gui=none
 " Syntax highlighting
 hi Comment 		guifg=#A2B0B9 gui=italic
 hi Todo 		guifg=#8f8f8f gui=italic
-hi Constant 	guifg=#FF8431 gui=none
-hi Identifier 	guifg=#cae682 gui=none
-hi Function 	guifg=#5FEE98 gui=none
-hi Type 		guifg=#7BC3F3 gui=none
-hi Statement 	guifg=#9BE78C gui=none
+
+" http://tristen.ca/hcl-picker/#/hlc/6/1/EB7F73/D6AF4C
+hi Constant 	guifg=#00f9b1 gui=none
+hi Identifier 	guifg=#82aad5 gui=none
+hi Function 	guifg=#3bbdb1 gui=none
+hi Type 		guifg=#81bf6c gui=none
+hi Statement 	guifg=#d6af4c gui=none
+
 hi Repeat       guifg=#5BB4F3 gui=none
 hi Keyword		guifg=#4F9BD1 gui=none
 hi Ignore 	    guibg=#1F1F1F guifg=#1F1F1F	gui=none
