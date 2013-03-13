@@ -45,7 +45,7 @@
 	url = https://github.com/jnwhiteh/vim-golang.git
 [submodule "bundle/supertab"]
 	path = bundle/supertab
-	url = https://github.com/ervandew/supertab.git
+	url = git://github.com/ervandew/supertab.git
 [submodule "bundle/mediawiki.vim"]
 	path = bundle/mediawiki.vim
 	url = https://github.com/chikamichi/mediawiki.vim.git

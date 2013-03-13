@@ -8,7 +8,7 @@ set vb
 set nocompatible
 set showmatch
 set ruler
-set number
+" set number
 set nowrap
 set hlsearch
 set colorcolumn=80
@@ -17,14 +17,13 @@ set shiftwidth=4
 set autoindent
 set expandtab
 
+set wildignore+=node_modules
+
 " never ever write temporary files into file directories
 set backupdir=/Users/tmcw/tmp/
 set directory=/Users/tmcw/tmp/
 set nobackup
 set nowritebackup
-
-nmap <leader>. :tabnext<cr>
-nmap <leader>/ :tabnext<cr>
 
 inoremap <expr><TAB>  pumvisible() ? "<C-n>" : "<TAB>"
 nnoremap <leader>d :NERDTreeToggle<cr>
@@ -38,7 +37,7 @@ let NERDTreeHijackNetrw=1
 highlight clear SignColumn
 
 set background=dark
-colorscheme tombat
+colorscheme kod
 if has("gui_running")
   set go-=T
   set guifont=M+_1mn_light:h13
@@ -84,11 +83,13 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{SL('fugitive#statusline')}%{SL('Syntas
 
 let g:syntastic_enable_signs=1
 let g:syntastic_disabled_filetypes = ['cpp']
+let g:syntastic_javascript_checkers = ['jshint']
 
 let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 
 let g:ctrlp_extensions = ['line']
+let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 let g:solarized_contrast="low"
