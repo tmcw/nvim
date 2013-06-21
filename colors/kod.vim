@@ -57,6 +57,7 @@ hi Special		guifg=#66c8ef gui=none
 
 hi javaScriptFuncName 	guifg=#85FFDF  guibg=#1F2B31 gui=none
 
+hi link jsParen      Normal
 hi javaScriptSpecial guifg=#D6F8B8 gui=none
 hi WarningMsg	guifg=#FF5555
 hi Exception    guifg=#EC6B6B gui=none
@@ -86,9 +87,9 @@ hi EnumerationValue guifg=#42DCFF
 hi EnumerationName  guifg=#42DCFF
 hi Member           guifg=#42DCFF
 hi Union            guifg=#42DCFF
-hi GlobalVariable   guifg=#42DCFF  
-hi LocalVariable    guifg=#42DCFF  
-hi GlobalConstant   guifg=#42DCFF  
+hi GlobalVariable   guifg=#42DCFF
+hi LocalVariable    guifg=#42DCFF
+hi GlobalConstant   guifg=#42DCFF
 
 hi link Character       Constant
 hi link Boolean         Constant
@@ -107,14 +108,14 @@ hi link SpecialComment  Special
 hi link Debug           Special
 
 " Special for HTML
-hi link htmlTag         Keyword 
-hi link htmlTagName     Conditional 
-hi link htmlEndTag      Identifier 
+hi link htmlTag         Keyword
+hi link htmlTagName     Conditional
+hi link htmlEndTag      Identifier
 
 " Special for XML
-hi link xmlTag          Keyword 
-hi link xmlTagName      Conditional 
-hi link xmlEndTag       Identifier 
+hi link xmlTag          Keyword
+hi link xmlTagName      Conditional
+hi link xmlEndTag       Identifier
 
 " Doxygen
 hi doxygenBrief                 gui=NONE guifg=#fdab60   guibg=NONE
