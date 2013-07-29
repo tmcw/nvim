@@ -23,11 +23,14 @@ set directory=/Users/tmcw/tmp/
 set nobackup
 set nowritebackup
 
+set laststatus=2
+set timeout timeoutlen=1000 ttimeoutlen=100
+
 set background=dark
-colorscheme Tomorrow-Night
+colorscheme tombat
 if has("gui_running")
   set go-=T
-  set guifont=M+_1m_light:h13
+  set guifont=M+_1mn_light_for_Powerline:h13
   set noballooneval
 else
   set mouse=a
@@ -37,10 +40,6 @@ highlight clear SignColumn
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd BufNewFile,BufRead *.json set filetype=javascript
 autocmd BufRead,BufNewFile *.mml set syntax=javascript
 autocmd BufRead,BufNewFile *.bones set syntax=javascript
@@ -63,7 +62,6 @@ endfunc
 
 function! LightMode()
   colorscheme habiLight
-
   set guifont=Monaco:h13
 endfunc
 
@@ -90,19 +88,6 @@ function! ToggleFocusMode()
 endfunc
 nnoremap <F1> :call ToggleFocusMode()<cr>
 
-" Statusline helper
-if has("eval")
-function! SL(function)
-  if exists('*'.a:function)
-    return call(a:function,[])
-  else
-    return ''
-  endif
-endfunction
-endif
-
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{SL('fugitive#statusline')}%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
-
 let NERDTreeDirArrows=1
 let NERDTreeMinimalUI=1
 let NERDTreeIgnore=['\.pyc$', 'CVS', '\~$']
@@ -115,18 +100,12 @@ let g:syntastic_javascript_checkers = ['jshint']
 let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 
-let g:ctrlp_extensions = ['line']
-let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-let g:solarized_contrast="low"
-
 inoremap <expr><TAB>  pumvisible() ? "<C-n>" : "<TAB>"
-nnoremap <leader>d :NERDTreeToggle<cr>
-nnoremap <leader>a :Ack 
 map <leader>gu :GundoToggle<CR>
-map <c-l> :CtrlPLine<CR>
-map <c-k> :CtrlPBuffer<CR>
+" map <c-l> :CtrlPLine<CR>
+" map <c-k> :CtrlPBuffer<CR>
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -137,3 +116,28 @@ nnoremap <C-H> <C-W><C-H>
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
 set shell=/bin/bash
+
+" Unite
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <C-p> :<C-u>Unite -buffer-name=files   -start-insert file<cr>
+nnoremap <C-t> :<C-u>Unite -buffer-name=files   -start-insert file_rec/async<cr>
+nnoremap <C-y> :<C-u>Unite -buffer-name=yank    history/yank<cr>
+nnoremap <C-l> :<C-u>Unite -buffer-name=search    grep:.<cr>
+
+" Use ag for search
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Play nice with supertab
+  let b:SuperTabDisabled=1
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
