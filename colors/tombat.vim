@@ -97,6 +97,11 @@ hi link SpecialChar     Special
 hi link SpecialComment  Special
 hi link Debug           Special
 
+" Javascript
+hi Variable   guifg=#C1C6CE
+hi link jsIdentifier Variable
+hi link Noise Structure    
+
 " Special for HTML
 hi link htmlTag         Keyword 
 hi link htmlTagName     Conditional 

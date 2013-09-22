@@ -37,33 +37,21 @@
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = git://github.com/ervandew/supertab.git
-[submodule "bundle/atom"]
-	path = bundle/atom
-	url = https://github.com/gregsexton/Atom.git
-[submodule "bundle/badwolf"]
-	path = bundle/badwolf
-	url = https://github.com/sjl/badwolf.git
 [submodule "bundle/rust"]
 	path = bundle/rust
 	url = https://github.com/reusee/vim.rust.git
-[submodule "bundle/vim-literate-coffeescript"]
-	path = bundle/vim-literate-coffeescript
-	url = https://github.com/mintplant/vim-literate-coffeescript.git
-[submodule "bundle/EasyGrep"]
-	path = bundle/EasyGrep
-	url = git://github.com/vim-scripts/EasyGrep.git
 [submodule "bundle/tern_for_vim"]
 	path = bundle/tern_for_vim
 	url = git://github.com/marijnh/tern_for_vim.git
 [submodule "bundle/vim-fish"]
 	path = bundle/vim-fish
 	url = git://github.com/aliva/vim-fish.git
-[submodule "bundle/vim-typescript"]
-	path = bundle/vim-typescript
-	url = git://github.com/dmitry-ilyashevich/vim-typescript.git
-[submodule "bundle/unite.vim"]
-	path = bundle/unite.vim
-	url = https://github.com/vim-scripts/unite.vim.git
-[submodule "bundle/vimproc"]
-	path = bundle/vimproc
-	url = https://github.com/Shougo/vimproc.vim.git
+[submodule "bundle/ctrl-p"]
+	path = bundle/ctrl-p
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "bundle/ctrlp-funky"]
+	path = bundle/ctrlp-funky
+	url = https://github.com/tacahiroy/ctrlp-funky.git
