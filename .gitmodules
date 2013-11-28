@@ -55,3 +55,18 @@
 [submodule "bundle/ctrlp-funky"]
 	path = bundle/ctrlp-funky
 	url = https://github.com/tacahiroy/ctrlp-funky.git
+[submodule "bundle/vim-glsl"]
+	path = bundle/vim-glsl
+	url = https://github.com/tikhomirov/vim-glsl.git
+[submodule "bundle/signify"]
+	path = bundle/signify
+	url = https://github.com/mhinz/vim-signify.git
+[submodule "base16"]
+	path = base16
+	url = git://github.com/chriskempson/base16-vim.git
+[submodule "bundle/base16"]
+	path = bundle/base16
+	url = git://github.com/chriskempson/base16-vim.git
+[submodule "bundle/ctrlp-cmatcher"]
+	path = bundle/ctrlp-cmatcher
+	url = https://github.com/JazzCore/ctrlp-cmatcher.git
