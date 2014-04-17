@@ -43,9 +43,6 @@
 [submodule "bundle/tern_for_vim"]
 	path = bundle/tern_for_vim
 	url = git://github.com/marijnh/tern_for_vim.git
-[submodule "bundle/vim-fish"]
-	path = bundle/vim-fish
-	url = git://github.com/aliva/vim-fish.git
 [submodule "bundle/ctrl-p"]
 	path = bundle/ctrl-p
 	url = https://github.com/kien/ctrlp.vim.git
