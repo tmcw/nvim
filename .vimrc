@@ -1,9 +1,9 @@
 silent! call pathogen#infect()
 
+set t_Co=256
 syntax enable
 filetype plugin indent on
 
-set t_Co=256
 set vb
 set number
 set nocompatible
@@ -27,13 +27,14 @@ set laststatus=2
 set timeout timeoutlen=1000 ttimeoutlen=100
 
 set background=dark
-" colorscheme tombat
-colorscheme base16-chalk
+" colorscheme base16-chalk
 if has("gui_running")
   set go-=T
-  set guifont=M+_1mn_light:h13
+  set guifont=M+_1mn_medium:h18
   set noballooneval
+  colorscheme base16-chalk
 else
+  colorscheme desert256
   set mouse=a
 endif
 
@@ -42,6 +43,7 @@ match ExtraWhitespace /\s\+$/
 
 autocmd BufNewFile,BufRead *.json set filetype=javascript
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.gradle set filetype=groovy
 autocmd BufNewFile,BufRead *._ set filetype=html
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
@@ -54,7 +56,7 @@ function! LightMode()
 endfunc
 
 let g:syntastic_enable_signs=1
-let g:syntastic_disabled_filetypes = ['cpp']
+let g:syntastic_disabled_filetypes = ['cpp', 'html']
 let g:syntastic_javascript_checkers = ['jshint']
 
 let g:gist_clip_command = 'pbcopy'
@@ -66,16 +68,10 @@ inoremap <expr><TAB>  pumvisible() ? "<C-n>" : "<TAB>"
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
 set shell=/bin/bash
-map <leader>d :NERDTreeToggle<CR>
-
-let NERDTreeDirArrows=1
-let NERDTreeMinimalUI=1
-let NERDTreeIgnore=['\.pyc$', 'CVS', '\~$']
-let NERDTreeHijackNetrw=1
 
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-let g:ctrlp_extensions = ['line', 'funky']
+let g:ctrlp_extensions = ['line', 'funky', 'csearch']
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 nnoremap <C-f> :CtrlPFunky<Cr>
 
@@ -92,3 +88,4 @@ endif
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{SL('fugitive#statusline')}%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
 
 nmap <leader>a :Ack 
+nmap <leader>c :Gcommit --amend<Cr>
