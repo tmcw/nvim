@@ -30,9 +30,9 @@ set background=dark
 " colorscheme base16-chalk
 if has("gui_running")
   set go-=T
-  set guifont=M+_1mn_medium:h18
+  set guifont=M+_1mn_light:h18
   set noballooneval
-  colorscheme base16-chalk
+  colorscheme base16-tomorrow
 else
   colorscheme desert256
   set mouse=a
@@ -75,17 +75,8 @@ let g:ctrlp_extensions = ['line', 'funky', 'csearch']
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 nnoremap <C-f> :CtrlPFunky<Cr>
 
-if has("eval")
-function! SL(function)
-  if exists('*'.a:function)
-    return call(a:function,[])
-  else
-    return ''
-  endif
-endfunction
-endif
 
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{SL('fugitive#statusline')}%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
+set statusline=%f%{fugitive#statusline()}
 
 nmap <leader>a :Ack 
 nmap <leader>c :Gcommit --amend<Cr>
