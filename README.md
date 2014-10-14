@@ -11,3 +11,9 @@ homebrew+nodejs bootstrap:
 
     brew install git macvim the_silver_searcher
     npm install -g jshint
+
+    cd bundle/tern_for_vim
+    npm install
+
+    cd bundle/ctrlp-cmatcher
+    ./install.sh

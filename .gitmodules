@@ -46,9 +46,6 @@
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "bundle/ctrlp-funky"]
-	path = bundle/ctrlp-funky
-	url = https://github.com/tacahiroy/ctrlp-funky.git
 [submodule "bundle/vim-glsl"]
 	path = bundle/vim-glsl
 	url = https://github.com/tikhomirov/vim-glsl.git
