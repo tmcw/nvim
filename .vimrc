@@ -73,6 +73,7 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 
 let g:ctrlp_extensions = ['line', 'funky', 'csearch']
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+let g:ctrlp_max_files = 0
 nnoremap <C-f> :CtrlPFunky<Cr>
 
 
