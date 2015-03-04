@@ -30,9 +30,9 @@ set background=dark
 " colorscheme base16-chalk
 if has("gui_running")
   set go-=T
-  set guifont=M+_1mn_light:h18
+  set guifont=M+_1m_light:h14
   set noballooneval
-  colorscheme base16-tomorrow
+  colorscheme base16-ocean
 else
   colorscheme desert256
   set mouse=a
@@ -57,7 +57,7 @@ endfunc
 
 let g:syntastic_enable_signs=1
 let g:syntastic_disabled_filetypes = ['cpp', 'html']
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 
 let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
@@ -67,7 +67,7 @@ inoremap <expr><TAB>  pumvisible() ? "<C-n>" : "<TAB>"
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
-set shell=/bin/bash
+set shell=/usr/local/bin/zsh
 
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
@@ -75,9 +75,17 @@ let g:ctrlp_extensions = ['line', 'funky', 'csearch']
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 let g:ctrlp_max_files = 0
 nnoremap <C-f> :CtrlPFunky<Cr>
+nnoremap <leader>q :set nonumber!<CR>
 
 
 set statusline=%f%{fugitive#statusline()}
 
 nmap <leader>a :Ack 
 nmap <leader>c :Gcommit --amend<Cr>
+
+" never engage ex mode
+" http://www.bestofvim.com/tip/leave-ex-mode-good/
+nnoremap Q <nop>
+" unhighlight search with \/
+" http://www.bestofvim.com/tip/switch-off-current-search/
+nnoremap <silent> <Leader>/ :nohlsearch<CR>
