@@ -82,6 +82,3 @@
 [submodule "bundle/typescript-vim"]
 	path = bundle/typescript-vim
 	url = git@github.com:leafgarland/typescript-vim.git
-[submodule "bundle/yajs.vim"]
-	path = bundle/yajs.vim
-	url = https://github.com/othree/yajs.vim
