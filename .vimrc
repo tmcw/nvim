@@ -2,6 +2,7 @@ silent! call pathogen#infect()
 
 set t_Co=256
 syntax enable
+
 filetype plugin indent on
 
 set vb
@@ -23,6 +24,9 @@ set nobackup
 set nowritebackup
 set splitright
 
+" help gf work with node
+set suffixesadd+=.js
+
 set laststatus=2
 set timeout timeoutlen=1000 ttimeoutlen=100
 
@@ -32,7 +36,7 @@ if has("gui_running")
   set go-=T
   set guifont=M+_1m_light:h14
   set noballooneval
-  colorscheme base16-ocean
+  colorscheme base16-chalk
 else
   colorscheme desert256
   set mouse=a
@@ -83,9 +87,25 @@ set statusline=%f%{fugitive#statusline()}
 nmap <leader>a :Ack 
 nmap <leader>c :Gcommit --amend<Cr>
 
+let g:yankstack_map_keys = 0
+nmap <C-i> <Plug>yankstack_substitute_older_paste
+nmap <C-I> <Plug>yankstack_substitute_newer_paste
+
 " never engage ex mode
 " http://www.bestofvim.com/tip/leave-ex-mode-good/
 nnoremap Q <nop>
 " unhighlight search with \/
 " http://www.bestofvim.com/tip/switch-off-current-search/
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
+
+" \d to TernDef
+nnoremap <silent> <Leader>d :TernDef<CR>
+
+" http://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
+" search and replace visually highlighted text
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>t :tabnew<CR>
+
+
