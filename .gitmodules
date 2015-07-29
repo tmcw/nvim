@@ -34,9 +34,6 @@
 [submodule "bundle/rust"]
 	path = bundle/rust
 	url = https://github.com/reusee/vim.rust.git
-[submodule "bundle/tern_for_vim"]
-	path = bundle/tern_for_vim
-	url = git://github.com/marijnh/tern_for_vim.git
 [submodule "bundle/ctrl-p"]
 	path = bundle/ctrl-p
 	url = https://github.com/kien/ctrlp.vim.git
@@ -82,3 +79,21 @@
 [submodule "bundle/typescript-vim"]
 	path = bundle/typescript-vim
 	url = git@github.com:leafgarland/typescript-vim.git
+[submodule "bundle/vim-javascript"]
+	path = bundle/vim-javascript
+	url = git@github.com:pangloss/vim-javascript.git
+[submodule "bundle/oceanic-next-vim"]
+	path = bundle/oceanic-next-vim
+	url = git@github.com:yosiat/oceanic-next-vim.git
+[submodule "bundle/vim-expand-region"]
+	path = bundle/vim-expand-region
+	url = git@github.com:terryma/vim-expand-region.git
+[submodule "bundle/vim-yankstack"]
+	path = bundle/vim-yankstack
+	url = git@github.com:maxbrunsfeld/vim-yankstack.git
+[submodule "bundle/vim-eslint-compiler"]
+	path = bundle/vim-eslint-compiler
+	url = https://github.com/salomvary/vim-eslint-compiler.git
+[submodule "bundle/iceberg.vim"]
+	path = bundle/iceberg.vim
+	url = git@github.com:cocopon/iceberg.vim.git

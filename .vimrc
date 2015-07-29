@@ -13,8 +13,8 @@ set ruler
 set nowrap
 set hlsearch
 set colorcolumn=80
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set autoindent
 set expandtab
 set wildignore+=node_modules
@@ -71,7 +71,7 @@ inoremap <expr><TAB>  pumvisible() ? "<C-n>" : "<TAB>"
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
-set shell=/usr/local/bin/zsh
+set shell=/usr/local/bin/zsh\ -l
 
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
@@ -107,5 +107,3 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>t :tabnew<CR>
-
-
