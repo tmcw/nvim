@@ -36,7 +36,7 @@
 	url = https://github.com/reusee/vim.rust.git
 [submodule "bundle/ctrl-p"]
 	path = bundle/ctrl-p
-	url = https://github.com/kien/ctrlp.vim.git
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
@@ -97,3 +97,12 @@
 [submodule "bundle/iceberg.vim"]
 	path = bundle/iceberg.vim
 	url = git@github.com:cocopon/iceberg.vim.git
+[submodule "bundle/vim-toml"]
+	path = bundle/vim-toml
+	url = git@github.com:cespare/vim-toml.git
+[submodule "bundle/vim-istanbul"]
+	path = bundle/vim-istanbul
+	url = git://github.com/juanpabloaj/vim-istanbul.git
+[submodule "bundle/fzf"]
+	path = bundle/fzf
+	url = git@github.com:junegunn/fzf.git
