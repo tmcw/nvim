@@ -25,18 +25,12 @@
 [submodule "bundle/gundu.vim"]
 	path = bundle/gundu.vim
 	url = https://github.com/sjl/gundo.vim.git
-[submodule "bundle/vim-coffee-script"]
-	path = bundle/vim-coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = git://github.com/ervandew/supertab.git
 [submodule "bundle/rust"]
 	path = bundle/rust
 	url = https://github.com/reusee/vim.rust.git
-[submodule "bundle/ctrl-p"]
-	path = bundle/ctrl-p
-	url = https://github.com/ctrlpvim/ctrlp.vim.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
@@ -52,15 +46,9 @@
 [submodule "bundle/base16"]
 	path = bundle/base16
 	url = git://github.com/chriskempson/base16-vim.git
-[submodule "bundle/ctrlp-cmatcher"]
-	path = bundle/ctrlp-cmatcher
-	url = https://github.com/JazzCore/ctrlp-cmatcher.git
 [submodule "bundle/vim-vinegar"]
 	path = bundle/vim-vinegar
 	url = git://github.com/tpope/vim-vinegar.git
-[submodule "bundle/vim-dispatch"]
-	path = bundle/vim-dispatch
-	url = https://github.com/tpope/vim-dispatch
 [submodule "bundle/vim-jsx"]
 	path = bundle/vim-jsx
 	url = https://github.com/mxw/vim-jsx
@@ -85,24 +73,15 @@
 [submodule "bundle/oceanic-next-vim"]
 	path = bundle/oceanic-next-vim
 	url = git@github.com:yosiat/oceanic-next-vim.git
-[submodule "bundle/vim-expand-region"]
-	path = bundle/vim-expand-region
-	url = git@github.com:terryma/vim-expand-region.git
 [submodule "bundle/vim-yankstack"]
 	path = bundle/vim-yankstack
 	url = git@github.com:maxbrunsfeld/vim-yankstack.git
 [submodule "bundle/vim-eslint-compiler"]
 	path = bundle/vim-eslint-compiler
 	url = https://github.com/salomvary/vim-eslint-compiler.git
-[submodule "bundle/iceberg.vim"]
-	path = bundle/iceberg.vim
-	url = git@github.com:cocopon/iceberg.vim.git
 [submodule "bundle/vim-toml"]
 	path = bundle/vim-toml
 	url = git@github.com:cespare/vim-toml.git
-[submodule "bundle/vim-istanbul"]
-	path = bundle/vim-istanbul
-	url = git://github.com/juanpabloaj/vim-istanbul.git
 [submodule "bundle/fzf"]
 	path = bundle/fzf
 	url = git@github.com:junegunn/fzf.git
