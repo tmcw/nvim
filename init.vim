@@ -1,19 +1,24 @@
 silent! call pathogen#infect()
 
-set t_Co=256
-set t_AB=^[[48;5;%dm
-set t_AF=^[[38;5;%dm
 syntax enable
 
 filetype plugin indent on
+
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 map <C-s> :w<CR>  "Works in normal mode, must press Esc first"
 nnoremap <C-k> :tabnext<CR>
 nnoremap <C-j> :tabprevious<CR>
 nnoremap <C-p> :FZF<CR>
 
+nnoremap <silent> ,rt :call neoterm#test#run('all')<cr>
+let g:neoterm_keep_term_open = 1
+let g:neoterm_run_tests_bg = 1
+let g:neoterm_raise_when_tests_fail = 1
+
 set vb
 set number
+set ttyfast
 set nocompatible
 set showmatch
 set ruler
@@ -32,7 +37,6 @@ set nobackup
 set nowritebackup
 set splitright
 set laststatus=2
-set timeout timeoutlen=1000 ttimeoutlen=100
 
 set background=dark
 " colorscheme base16-chalk
@@ -45,6 +49,8 @@ else
   colorscheme OceanicNext
   set mouse=a
 endif
+
+set background=dark
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
