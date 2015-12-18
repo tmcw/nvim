@@ -61,9 +61,6 @@
 [submodule "bundle/fzf"]
 	path = bundle/fzf
 	url = git@github.com:junegunn/fzf.git
-[submodule "bundle/neoterm"]
-	path = bundle/neoterm
-	url = git@github.com:kassio/neoterm.git
 [submodule "bundle/neomake"]
 	path = bundle/neomake
 	url = git@github.com:benekastah/neomake.git

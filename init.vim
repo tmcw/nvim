@@ -16,7 +16,6 @@ nmap <leader>a :Ack
 
 set visualbell
 set noerrorbells
-set vb
 set number
 set ruler
 set noincsearch
@@ -26,10 +25,6 @@ set hlsearch
 set synmaxcol=400
 " style: show the 81th line
 set colorcolumn=81
-set tabstop=4
-set shiftwidth=4
-set autoindent
-set expandtab
 set wildignore+=node_modules
 set backupdir=/Users/tmcw/tmp/
 set directory=/Users/tmcw/tmp/
