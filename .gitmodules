@@ -67,21 +67,21 @@
 [submodule "bundle/vim-javascript"]
 	path = bundle/vim-javascript
 	url = git@github.com:pangloss/vim-javascript.git
-[submodule "bundle/oceanic-next-vim"]
-	path = bundle/oceanic-next-vim
-	url = git@github.com:yosiat/oceanic-next-vim.git
 [submodule "bundle/vim-yankstack"]
 	path = bundle/vim-yankstack
 	url = git@github.com:maxbrunsfeld/vim-yankstack.git
 [submodule "bundle/vim-eslint-compiler"]
 	path = bundle/vim-eslint-compiler
 	url = https://github.com/salomvary/vim-eslint-compiler.git
-[submodule "bundle/vim-toml"]
-	path = bundle/vim-toml
-	url = git@github.com:cespare/vim-toml.git
 [submodule "bundle/fzf"]
 	path = bundle/fzf
 	url = git@github.com:junegunn/fzf.git
 [submodule "bundle/neoterm"]
 	path = bundle/neoterm
 	url = git@github.com:kassio/neoterm.git
+[submodule "bundle/neomake"]
+	path = bundle/neomake
+	url = git@github.com:benekastah/neomake.git
+[submodule "bundle/vim-sleuth"]
+	path = bundle/vim-sleuth
+	url = git://github.com/tpope/vim-sleuth.git
