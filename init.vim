@@ -64,6 +64,9 @@ autocmd BufWinLeave * call clearmatches()
 let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 
+" configure vim-jsx
+let g:jsx_ext_required = 0
+
 " Configure Ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
