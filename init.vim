@@ -14,9 +14,10 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :qa<CR>
 nmap <leader>a :Ack 
 
+set visualbell
+set noerrorbells
 set vb
 set number
-set showmatch
 set ruler
 set noincsearch
 set nowrap
@@ -48,15 +49,10 @@ set statusline=%f%{fugitive#statusline()}
 
 set mouse=a
 
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
 autocmd BufNewFile,BufRead *.json set filetype=javascript
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 autocmd! BufWritePost * Neomake
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 
 autocmd BufWinLeave * call clearmatches()
 
