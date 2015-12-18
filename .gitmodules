@@ -19,9 +19,6 @@
 [submodule "bundle/webapi-vim"]
 	path = bundle/webapi-vim
 	url = https://github.com/mattn/webapi-vim.git
-[submodule "bundle/supertab"]
-	path = bundle/supertab
-	url = git://github.com/ervandew/supertab.git
 [submodule "bundle/rust"]
 	path = bundle/rust
 	url = https://github.com/reusee/vim.rust.git
@@ -70,3 +67,6 @@
 [submodule "bundle/vim-javascript"]
 	path = bundle/vim-javascript
 	url = git@github.com:pangloss/vim-javascript.git
+[submodule "bundle/deoplete"]
+	path = bundle/deoplete
+	url = git@github.com:Shougo/deoplete.nvim.git
