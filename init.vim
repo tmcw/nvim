@@ -1,5 +1,3 @@
-set encoding=utf-8
-
 silent! call pathogen#infect()
 
 filetype plugin indent on
@@ -26,8 +24,6 @@ set synmaxcol=400
 " style: show the 81th line
 set colorcolumn=81
 set wildignore+=node_modules
-set backupdir=/Users/tmcw/tmp/
-set directory=/Users/tmcw/tmp/
 set nobackup
 set nowritebackup
 set splitright
@@ -51,6 +47,11 @@ autocmd! BufWritePost * Neomake
 
 autocmd BufWinLeave * call clearmatches()
 
+let g:neomake_error_sign = {
+    \ 'text': '✖',
+    \ 'texthl': 'ErrorMsg',
+    \ }
+
 " Configure Gist
 let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
@@ -62,7 +63,6 @@ let g:jsx_ext_required = 0
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 inoremap <expr><TAB>  pumvisible() ? "<C-n>" : "<TAB>"
-
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
