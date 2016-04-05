@@ -40,21 +40,12 @@
 [submodule "bundle/vim-jsx"]
 	path = bundle/vim-jsx
 	url = https://github.com/mxw/vim-jsx
-[submodule "bundle/editorconfig-vim"]
-	path = bundle/editorconfig-vim
-	url = https://github.com/editorconfig/editorconfig-vim.git
 [submodule "bundle/vim-go"]
 	path = bundle/vim-go
 	url = https://github.com/fatih/vim-go.git
-[submodule "bundle/rust.vim"]
-	path = bundle/rust.vim
-	url = https://github.com/wting/rust.vim.git
 [submodule "bundle/vim-repeat"]
 	path = bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
-[submodule "bundle/typescript-vim"]
-	path = bundle/typescript-vim
-	url = git@github.com:leafgarland/typescript-vim.git
 [submodule "bundle/fzf"]
 	path = bundle/fzf
 	url = git@github.com:junegunn/fzf.git
@@ -70,3 +61,15 @@
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = git@github.com:ervandew/supertab.git
+[submodule "bundle/elm.vim"]
+	path = bundle/elm.vim
+	url = https://github.com/lambdatoast/elm.vim.git
+[submodule "bundle/yankstack"]
+	path = bundle/yankstack
+	url = git@github.com:maxbrunsfeld/vim-yankstack.git
+[submodule "bundle/goyo.vim"]
+	path = bundle/goyo.vim
+	url = git@github.com:junegunn/goyo.vim.git
+[submodule "bundle/lightroom.vim"]
+	path = bundle/lightroom.vim
+	url = git@github.com:junegunn/limelight.vim.git
