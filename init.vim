@@ -8,12 +8,14 @@ nnoremap <C-k> :tabnext<CR>
 nnoremap <C-j> :tabprevious<CR>
 nnoremap <C-p> :FZF<CR>
 nnoremap <Leader>w :w<CR>
+nnoremap <Leader>y "*y
 nnoremap <Leader>W :wa<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :qa<CR>
 nnoremap <Leader>f :Neomake flow<CR>
 nmap <leader>a :Ack 
 
+set clipboard+=unnamed
 set shiftwidth=2
 set visualbell
 set noerrorbells
@@ -27,8 +29,6 @@ set synmaxcol=400
 set ruler
 set colorcolumn=81
 set wildignore+=node_modules
-set nobackup
-set nowritebackup
 set splitright
 set laststatus=2
 set ttimeoutlen=0
@@ -37,8 +37,9 @@ set ttimeoutlen=0
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $PATH .= ':node_modules/.bin/'
+let g:gruvbox_italic=1
 set background=dark
-colorscheme hybrid
+colorscheme gruvbox
 set statusline=%f%{fugitive#statusline()}
 
 set mouse=a
