@@ -64,12 +64,15 @@
 [submodule "bundle/elm.vim"]
 	path = bundle/elm.vim
 	url = https://github.com/lambdatoast/elm.vim.git
-[submodule "bundle/yankstack"]
-	path = bundle/yankstack
-	url = git@github.com:maxbrunsfeld/vim-yankstack.git
-[submodule "bundle/goyo.vim"]
-	path = bundle/goyo.vim
-	url = git@github.com:junegunn/goyo.vim.git
-[submodule "bundle/lightroom.vim"]
-	path = bundle/lightroom.vim
-	url = git@github.com:junegunn/limelight.vim.git
+[submodule "bundle/vim-js-indent"]
+	path = bundle/vim-js-indent
+	url = https://github.com/gavocanov/vim-js-indent.git
+[submodule "bundle/javascript-libraries-syntax"]
+	path = bundle/javascript-libraries-syntax
+	url = https://github.com/othree/javascript-libraries-syntax.vim
+[submodule "bundle/deoplete-ternjs"]
+	path = bundle/deoplete-ternjs
+	url = https://github.com/carlitux/deoplete-ternjs.git
+[submodule "bundle/deoplete.nvim"]
+	path = bundle/deoplete.nvim
+	url = https://github.com/Shougo/deoplete.nvim.git

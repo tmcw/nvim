@@ -42,6 +42,17 @@ set background=dark
 colorscheme gruvbox
 set statusline=%f%{fugitive#statusline()}
 
+" vim-javascript
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_flow = 1
+let g:deoplete#enable_at_startup = 1
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = 0
+set completeopt-=preview
+" == mxw/vim-jsx ==
+let g:jsx_ext_required = 0
+
 set mouse=a
 
 autocmd BufNewFile,BufRead *.json set filetype=javascript
