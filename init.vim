@@ -8,8 +8,6 @@ nnoremap <C-k> :tabnext<CR>
 nnoremap <C-j> :tabprevious<CR>
 nnoremap <C-p> :FZF<CR>
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>y "*y
-nnoremap <Leader>W :wa<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :qa<CR>
 nnoremap <Leader>f :Neomake flow<CR>
@@ -46,6 +44,7 @@ set statusline=%f%{fugitive#statusline()}
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_flow = 1
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#disable_auto_complete = 1
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:tern_request_timeout = 1
 let g:tern_show_signature_in_pum = 0
@@ -75,9 +74,6 @@ let g:neomake_warning_sign = {
 " Configure Gist
 let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
-
-" configure vim-jsx
-let g:jsx_ext_required = 0
 
 " Configure Ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
