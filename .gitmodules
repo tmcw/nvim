@@ -36,7 +36,7 @@
 	url = git://github.com/tpope/vim-vinegar.git
 [submodule "bundle/vim-jsx"]
 	path = bundle/vim-jsx
-	url = https://github.com/mxw/vim-jsx
+	url = https://github.com/mxw/vim-jsx.git
 [submodule "bundle/vim-go"]
 	path = bundle/vim-go
 	url = https://github.com/fatih/vim-go.git
@@ -64,9 +64,6 @@
 [submodule "bundle/vim-js-indent"]
 	path = bundle/vim-js-indent
 	url = https://github.com/gavocanov/vim-js-indent.git
-[submodule "bundle/javascript-libraries-syntax"]
-	path = bundle/javascript-libraries-syntax
-	url = https://github.com/othree/javascript-libraries-syntax.vim
 [submodule "bundle/deoplete-ternjs"]
 	path = bundle/deoplete-ternjs
 	url = https://github.com/carlitux/deoplete-ternjs.git
@@ -76,3 +73,9 @@
 [submodule "bundle/vim-easymotion"]
 	path = bundle/vim-easymotion
 	url = https://github.com/easymotion/vim-easymotion.git
+[submodule "bundle/rust.vim"]
+	path = bundle/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git
+[submodule "bundle/tabular"]
+	path = bundle/tabular
+	url = git://github.com/godlygeek/tabular.git
