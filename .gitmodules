@@ -58,9 +58,6 @@
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = git@github.com:ervandew/supertab.git
-[submodule "bundle/elm.vim"]
-	path = bundle/elm.vim
-	url = https://github.com/lambdatoast/elm.vim.git
 [submodule "bundle/vim-js-indent"]
 	path = bundle/vim-js-indent
 	url = https://github.com/gavocanov/vim-js-indent.git
@@ -79,3 +76,6 @@
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = git://github.com/godlygeek/tabular.git
+[submodule "bundle/elm-vim"]
+	path = bundle/elm-vim
+	url = https://github.com/ElmCast/elm-vim.git
