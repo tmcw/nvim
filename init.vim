@@ -1,7 +1,57 @@
-silent! call pathogen#infect()
+call plug#begin('~/.vim/plugged')
 
-syntax on
-filetype plugin indent on
+" Basics
+Plug 'tpope/vim-sensible'
+
+" Git
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-fugitive'
+Plug 'mattn/gist-vim'
+
+" JavaScript
+Plug 'pangloss/vim-javascript'
+Plug 'gavocanov/vim-js-indent'
+Plug 'mxw/vim-jsx'
+
+" Completion
+Plug 'ervandew/supertab'
+
+" Searching
+Plug 'mileszs/ack.vim'
+Plug 'junegunn/fzf'
+
+" VimScript Utilities
+Plug 'mattn/webapi-vim'
+
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tikhomirov/vim-glsl'
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-repeat'
+Plug 'benekastah/neomake'
+Plug 'tpope/vim-sleuth'
+Plug 'easymotion/vim-easymotion'
+Plug 'godlygeek/tabular'
+
+" Go
+Plug 'fatih/vim-go'
+
+" Rust
+Plug 'rust-lang/rust.vim'
+
+" Elm
+Plug 'ElmCast/elm-vim'
+
+" color schemes
+Plug 'chriskempson/base16-vim'
+Plug 'junegunn/seoul256.vim'
+Plug 'tyrannicaltoucan/vim-deep-space'
+Plug 'morhetz/gruvbox'
+Plug 'w0ng/vim-hybrid'
+Plug 'juanedi/predawn.vim'
+Plug 'cocopon/iceberg.vim'
+call plug#end()
 
 " Keybindings
 nnoremap <C-k> :tabnext<CR>
@@ -24,32 +74,27 @@ set hlsearch
 " performance: don't highlight beyond 400 columns
 set synmaxcol=400
 " style: show the 81th line
-set ruler
 set colorcolumn=81
 set wildignore+=node_modules
 set splitright
-set laststatus=2
 set ttimeoutlen=0
 
 " Appearance
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $PATH .= ':node_modules/.bin/'
-let g:gruvbox_italic=1
 set background=dark
-colorscheme gruvbox
 set statusline=%f%{fugitive#statusline()}
 
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_flow = 1
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#disable_auto_complete = 1
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:tern_request_timeout = 1
 let g:tern_show_signature_in_pum = 0
 set completeopt-=preview
-" == mxw/vim-jsx ==
+
+" mxw/vim-jsx
 let g:jsx_ext_required = 0
 
 set mouse=a
@@ -87,3 +132,5 @@ set shell=/usr/local/bin/zsh
 " never engage ex mode
 " http://www.bestofvim.com/tip/leave-ex-mode-good/
 nnoremap Q <nop>
+
+colorscheme seoul256
