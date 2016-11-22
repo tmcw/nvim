@@ -1,8 +1,5 @@
 call plug#begin('~/.vim/plugged')
 
-" Basics
-Plug 'tpope/vim-sensible'
-
 " Git
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-fugitive'
@@ -15,12 +12,17 @@ Plug 'mxw/vim-jsx'
 
 " Completion
 Plug 'ervandew/supertab'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for': ['javascript', 'javascript.jsx'] }
+Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
 " Searching
 Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf'
 
 " VimScript Utilities
+" Used by gist-vim and rust.vim
 Plug 'mattn/webapi-vim'
 
 Plug 'tpope/vim-surround'
@@ -32,7 +34,6 @@ Plug 'tpope/vim-repeat'
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-sleuth'
 Plug 'easymotion/vim-easymotion'
-Plug 'godlygeek/tabular'
 
 " Go
 Plug 'fatih/vim-go'
@@ -57,6 +58,7 @@ call plug#end()
 nnoremap <C-k> :tabnext<CR>
 nnoremap <C-j> :tabprevious<CR>
 nnoremap <C-p> :FZF<CR>
+nnoremap <C-l> :FZF<CR> %<Tab>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :qa<CR>
@@ -97,6 +99,10 @@ set completeopt-=preview
 " mxw/vim-jsx
 let g:jsx_ext_required = 0
 
+" deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#file#enable_buffer_path = 1
+
 set mouse=a
 
 autocmd BufNewFile,BufRead *.json set filetype=javascript
@@ -123,9 +129,15 @@ let g:gist_detect_filetype = 1
 " Configure Ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
+" Elm
+let g:elm_format_autosave = 1
+
 inoremap <expr><TAB>  pumvisible() ? "<C-n>" : "<TAB>"
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+
+" When I resize the window, divide tab space evenly
+autocmd VimResized * wincmd =
 
 set shell=/usr/local/bin/zsh
 
