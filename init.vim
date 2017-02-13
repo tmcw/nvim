@@ -1,21 +1,27 @@
 call plug#begin('~/.vim/plugged')
 
+Plug 'justinmk/vim-dirvish'
+Plug 'tpope/vim-commentary'
+Plug 'easymotion/vim-easymotion'
+
+
 " Git
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 Plug 'mattn/gist-vim'
 
 " JavaScript
 Plug 'pangloss/vim-javascript'
 Plug 'gavocanov/vim-js-indent'
 Plug 'mxw/vim-jsx'
+Plug 'sbdchd/neoformat'
 
 " Completion
 Plug 'ervandew/supertab'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for': ['javascript', 'javascript.jsx'] }
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern' }
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
 " Searching
 Plug 'mileszs/ack.vim'
@@ -27,24 +33,22 @@ Plug 'mattn/webapi-vim'
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tikhomirov/vim-glsl'
-Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-repeat'
-Plug 'benekastah/neomake'
 Plug 'tpope/vim-sleuth'
-Plug 'easymotion/vim-easymotion'
 
-" Go
-Plug 'fatih/vim-go'
+" Syntax
+Plug 'w0rp/ale'
+Plug 'tmcw/vim-eslint-compiler'
 
-" Rust
-Plug 'rust-lang/rust.vim'
-
-" Elm
-Plug 'ElmCast/elm-vim'
+" Languages
+Plug 'fatih/vim-go', { 'for': ['go'] }
+Plug 'tikhomirov/vim-glsl'
+Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
+Plug 'ElmCast/elm-vim', { 'for': ['elm'] }
 
 " color schemes
+Plug 'nanotech/jellybeans.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'tyrannicaltoucan/vim-deep-space'
@@ -52,6 +56,7 @@ Plug 'morhetz/gruvbox'
 Plug 'w0ng/vim-hybrid'
 Plug 'juanedi/predawn.vim'
 Plug 'cocopon/iceberg.vim'
+Plug 'mhinz/vim-janah'
 call plug#end()
 
 " Keybindings
@@ -59,13 +64,15 @@ nnoremap <C-k> :tabnext<CR>
 nnoremap <C-j> :tabprevious<CR>
 nnoremap <C-p> :FZF<CR>
 nnoremap <C-l> :FZF<CR> %<Tab>
-nnoremap <Leader>w :w<CR>
+nnoremap <Leader>w :update<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :qa<CR>
-nnoremap <Leader>f :Neomake flow<CR>
 nmap <leader>a :Ack 
 
-set clipboard+=unnamed
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+
+set termguicolors
 set shiftwidth=2
 set visualbell
 set noerrorbells
@@ -83,10 +90,10 @@ set ttimeoutlen=0
 
 " Appearance
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $PATH .= ':node_modules/.bin/'
 set background=dark
 set statusline=%f%{fugitive#statusline()}
+colorscheme janah
 
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1
@@ -107,20 +114,40 @@ set mouse=a
 
 autocmd BufNewFile,BufRead *.json set filetype=javascript
 autocmd BufRead,BufNewFile *.md set filetype=markdown
-
-autocmd! BufWritePost * Neomake
-
 autocmd BufWinLeave * call clearmatches()
+autocmd FileType javascript set formatprg=prettier\ --stdin
 
-let g:neomake_error_sign = {
-    \ 'text': '✖',
-    \ 'texthl': 'ErrorMsg',
-    \ }
+" Disable netrw
+let loaded_netrwPlugin = 1
+augroup my_dirvish_events
+  autocmd FileType dirvish sort r /[^\/]$/
+augroup END
 
-let g:neomake_warning_sign = {
-  \ 'text': '✹',
-  \ 'texthl': 'ErrorMsg',
-  \ }
+" Prettier
+function! TogglePrettier()
+    if !exists('#PrettierAutoGroup#BufWritePre')
+        echo "autoformat on"
+        augroup PrettierAutoGroup
+            autocmd!
+            autocmd BufWritePre * Neoformat
+        augroup END
+    else
+        echo "autoformat off"
+        augroup PrettierAutoGroup
+            autocmd!
+        augroup END
+    endif
+endfunction
+
+nnoremap <leader>f :call TogglePrettier()<CR>
+
+function! neoformat#formatters#javascript#prettier() abort
+    return {
+        \ 'exe': './node_modules/.bin/prettier',
+        \ 'args': ['--stdin', '--single-quote', '--print-width=120'],
+        \ 'stdin': 1,
+        \ }
+endfunction
 
 " Configure Gist
 let g:gist_clip_command = 'pbcopy'
@@ -136,13 +163,8 @@ inoremap <expr><TAB>  pumvisible() ? "<C-n>" : "<TAB>"
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
-" When I resize the window, divide tab space evenly
-autocmd VimResized * wincmd =
-
 set shell=/usr/local/bin/zsh
 
 " never engage ex mode
 " http://www.bestofvim.com/tip/leave-ex-mode-good/
 nnoremap Q <nop>
-
-colorscheme seoul256
