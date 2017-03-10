@@ -22,6 +22,7 @@ Plug 'ervandew/supertab'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for': ['javascript', 'javascript.jsx'] }
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern' }
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
+Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript.jsx'] }
 
 " Searching
 Plug 'mileszs/ack.vim'
@@ -46,14 +47,12 @@ Plug 'fatih/vim-go', { 'for': ['go'] }
 Plug 'tikhomirov/vim-glsl'
 Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
 Plug 'ElmCast/elm-vim', { 'for': ['elm'] }
+Plug 'sebastianmarkow/deoplete-rust'
 
 " color schemes
 Plug 'nanotech/jellybeans.vim'
 Plug 'chriskempson/base16-vim'
-Plug 'junegunn/seoul256.vim'
-Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'morhetz/gruvbox'
-Plug 'w0ng/vim-hybrid'
 Plug 'juanedi/predawn.vim'
 Plug 'cocopon/iceberg.vim'
 Plug 'mhinz/vim-janah'
@@ -69,8 +68,19 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :qa<CR>
 nmap <leader>a :Ack 
 
+" Tern
 let g:tern#command = ["tern"]
 let g:tern#arguments = ["--persistent"]
+
+" Flow
+let g:flow#enable = 0
+let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
+if matchstr(local_flow, "^\/\\w") == ''
+  let local_flow= getcwd() . "/" . local_flow
+endif
+if executable(local_flow)
+  let g:flow#flowpath = local_flow
+endif
 
 set termguicolors
 set shiftwidth=2
@@ -90,7 +100,7 @@ set ttimeoutlen=0
 
 " Appearance
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-let $PATH .= ':node_modules/.bin/'
+let $PATH .= ':node_modules/.bin/:/Users/tmcw/.cargo/bin/'
 set background=dark
 set statusline=%f%{fugitive#statusline()}
 colorscheme janah
@@ -115,7 +125,6 @@ set mouse=a
 autocmd BufNewFile,BufRead *.json set filetype=javascript
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufWinLeave * call clearmatches()
-autocmd FileType javascript set formatprg=prettier\ --stdin
 
 " Disable netrw
 let loaded_netrwPlugin = 1
@@ -140,6 +149,9 @@ function! TogglePrettier()
 endfunction
 
 nnoremap <leader>f :call TogglePrettier()<CR>
+
+let g:deoplete#sources#rust#racer_binary='/Users/tmcw/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/Users/tmcw/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust'
 
 function! neoformat#formatters#javascript#prettier() abort
     return {
