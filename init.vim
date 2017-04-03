@@ -1,5 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
+Plug 'tweekmonster/startuptime.vim'
+
 Plug 'justinmk/vim-dirvish'
 Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
