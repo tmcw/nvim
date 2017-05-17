@@ -1,6 +1,9 @@
 call plug#begin('~/.vim/plugged')
 
+Plug 'wakatime/vim-wakatime'
+
 Plug 'tweekmonster/startuptime.vim'
+Plug 'reedes/vim-thematic'
 
 Plug 'justinmk/vim-dirvish'
 Plug 'tpope/vim-commentary'
@@ -12,6 +15,11 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/gist-vim'
+
+" Clojure
+Plug 'venantius/vim-cljfmt'
+Plug 'tpope/vim-fireplace'
+Plug 'guns/vim-clojure-static'
 
 " JavaScript
 Plug 'pangloss/vim-javascript'
@@ -27,7 +35,7 @@ Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'np
 Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript.jsx'] }
 
 " Searching
-Plug 'mileszs/ack.vim'
+Plug 'mhinz/vim-grepper'
 Plug 'junegunn/fzf'
 
 " VimScript Utilities
@@ -50,15 +58,21 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
 Plug 'ElmCast/elm-vim', { 'for': ['elm'] }
 Plug 'sebastianmarkow/deoplete-rust'
+Plug 'rhysd/vim-wasm'
 
 " color schemes
+Plug 'agude/vim-eldar'
 Plug 'nanotech/jellybeans.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
 Plug 'juanedi/predawn.vim'
 Plug 'cocopon/iceberg.vim'
 Plug 'mhinz/vim-janah'
+Plug 'cloudhead/shady.vim'
+Plug 'reedes/vim-colors-pencil'
 call plug#end()
+
+set nocompatible
 
 " Keybindings
 nnoremap <C-k> :tabnext<CR>
@@ -68,10 +82,10 @@ nnoremap <C-l> :FZF<CR> %<Tab>
 nnoremap <Leader>w :update<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :qa<CR>
-nmap <leader>a :Ack 
+nmap <leader>a :GrepperRg 
 
 " Tern
-let g:tern#command = ["tern"]
+" let g:tern#command = ["tern"]
 let g:tern#arguments = ["--persistent"]
 
 " Flow
@@ -122,6 +136,18 @@ let g:jsx_ext_required = 0
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#file#enable_buffer_path = 1
 
+" pencil colorscheme
+let g:pencil_higher_contrast_ui = 1
+
+let g:thematic#themes = {
+\ 'pencil_lite' :{ 'colorscheme': 'pencil',
+\                  'background': 'light',
+\                  'airline-theme': 'light',
+\                  'laststatus': 0,
+\                  'ruler': 1,
+\                },
+\ }
+
 set mouse=a
 
 autocmd BufNewFile,BufRead *.json set filetype=javascript
@@ -155,20 +181,19 @@ nnoremap <leader>f :call TogglePrettier()<CR>
 let g:deoplete#sources#rust#racer_binary='/Users/tmcw/.cargo/bin/racer'
 let g:deoplete#sources#rust#rust_source_path='/Users/tmcw/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust'
 
-function! neoformat#formatters#javascript#prettier() abort
-    return {
-        \ 'exe': './node_modules/.bin/prettier',
-        \ 'args': ['--stdin', '--single-quote', '--print-width=120'],
-        \ 'stdin': 1,
-        \ }
-endfunction
+" function! neoformat#formatters#javascript#prettier() abort
+"     return {
+"         \ 'exe': './node_modules/.bin/prettier',
+"         \ 'args': ['--stdin', '--single-quote'],
+"         \ 'stdin': 1,
+"         \ }
+" endfunction
+
+let g:neoformat_only_msg_on_error = 1
 
 " Configure Gist
 let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
-
-" Configure Ack
-let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " Elm
 let g:elm_format_autosave = 1
@@ -178,6 +203,17 @@ inoremap <expr><TAB>  pumvisible() ? "<C-n>" : "<TAB>"
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
 set shell=/usr/local/bin/zsh
+
+let g:grepper = {}
+let g:grepper.tools = ['rg', 'ag']
+let g:grepper.simple_prompt = 1
+let g:grepper.quickfix = 1
+let g:grepper.highlight = 1
+
+autocmd BufReadPost quickfix noremap <silent> <buffer> o  <CR>
+autocmd BufReadPost quickfix noremap <silent> <buffer> t  <C-w><CR><C-w>T
+autocmd BufReadPost quickfix noremap <silent> <buffer> T  <C-w><CR><C-w>TgT<C-W><C-W>
+autocmd BufReadPost quickfix noremap <silent> <buffer> v  <C-w><CR><C-w>H<C-W>b<C-W>J<C-W>t
 
 " never engage ex mode
 " http://www.bestofvim.com/tip/leave-ex-mode-good/
