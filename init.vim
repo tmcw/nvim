@@ -1,14 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'wakatime/vim-wakatime'
-
-Plug 'tweekmonster/startuptime.vim'
-Plug 'reedes/vim-thematic'
-
 Plug 'justinmk/vim-dirvish'
-Plug 'tpope/vim-commentary'
-Plug 'easymotion/vim-easymotion'
-
 
 " Git
 Plug 'tpope/vim-rhubarb'
@@ -17,9 +10,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mattn/gist-vim'
 
 " Clojure
-Plug 'venantius/vim-cljfmt'
-Plug 'tpope/vim-fireplace'
-Plug 'guns/vim-clojure-static'
+" Plug 'venantius/vim-cljfmt'
+" Plug 'tpope/vim-fireplace'
+" Plug 'guns/vim-clojure-static'
 
 " JavaScript
 Plug 'pangloss/vim-javascript'
@@ -53,23 +46,21 @@ Plug 'w0rp/ale'
 Plug 'tmcw/vim-eslint-compiler'
 
 " Languages
-Plug 'fatih/vim-go', { 'for': ['go'] }
-Plug 'tikhomirov/vim-glsl'
-Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
-Plug 'ElmCast/elm-vim', { 'for': ['elm'] }
+" Plug 'fatih/vim-go', { 'for': ['go'] }
+" Plug 'tikhomirov/vim-glsl'
+" Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
+" Plug 'ElmCast/elm-vim', { 'for': ['elm'] }
+" Plug 'rhysd/vim-wasm'
 Plug 'sebastianmarkow/deoplete-rust'
-Plug 'rhysd/vim-wasm'
 
 " color schemes
-Plug 'agude/vim-eldar'
 Plug 'nanotech/jellybeans.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
 Plug 'juanedi/predawn.vim'
 Plug 'cocopon/iceberg.vim'
 Plug 'mhinz/vim-janah'
-Plug 'cloudhead/shady.vim'
-Plug 'reedes/vim-colors-pencil'
+Plug 'noahfrederick/vim-hemisu'
 call plug#end()
 
 set nocompatible
@@ -81,6 +72,7 @@ nnoremap <C-p> :FZF<CR>
 nnoremap <C-l> :FZF<CR> %<Tab>
 nnoremap <Leader>w :update<CR>
 nnoremap <Leader>q :q<CR>
+nnoremap <Leader>c :ccl<CR>
 nnoremap <Leader>Q :qa<CR>
 nmap <leader>a :GrepperRg 
 
@@ -115,11 +107,10 @@ set splitright
 set ttimeoutlen=0
 
 " Appearance
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 let $PATH .= ':node_modules/.bin/:/Users/tmcw/.cargo/bin/'
 set background=dark
 set statusline=%f%{fugitive#statusline()}
-colorscheme janah
+colorscheme jellybeans
 
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1
@@ -152,6 +143,7 @@ set mouse=a
 
 autocmd BufNewFile,BufRead *.json set filetype=javascript
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.wah set filetype=ast
 autocmd BufWinLeave * call clearmatches()
 
 " Disable netrw
