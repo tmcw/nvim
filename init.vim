@@ -69,7 +69,6 @@ set nocompatible
 nnoremap <C-k> :tabnext<CR>
 nnoremap <C-j> :tabprevious<CR>
 nnoremap <C-p> :FZF<CR>
-nnoremap <C-l> :FZF<CR> %<Tab>
 nnoremap <Leader>w :update<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>c :ccl<CR>
@@ -90,7 +89,6 @@ if executable(local_flow)
   let g:flow#flowpath = local_flow
 endif
 
-set termguicolors
 set shiftwidth=2
 set visualbell
 set noerrorbells
@@ -108,9 +106,10 @@ set ttimeoutlen=0
 
 " Appearance
 let $PATH .= ':node_modules/.bin/:/Users/tmcw/.cargo/bin/'
+set termguicolors
 set background=dark
 set statusline=%f%{fugitive#statusline()}
-colorscheme jellybeans
+colorscheme janah
 
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1
@@ -158,7 +157,7 @@ function! TogglePrettier()
         echo "autoformat on"
         augroup PrettierAutoGroup
             autocmd!
-            autocmd BufWritePre * Neoformat
+            autocmd BufWritePre *.js Neoformat
         augroup END
     else
         echo "autoformat off"
@@ -197,7 +196,7 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set shell=/usr/local/bin/zsh
 
 let g:grepper = {}
-let g:grepper.tools = ['rg', 'ag']
+let g:grepper.tools = ['rg']
 let g:grepper.simple_prompt = 1
 let g:grepper.quickfix = 1
 let g:grepper.highlight = 1
