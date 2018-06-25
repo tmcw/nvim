@@ -1,6 +1,5 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'wakatime/vim-wakatime'
 Plug 'justinmk/vim-dirvish'
 
 " Git
@@ -169,7 +168,6 @@ let g:deoplete#sources#rust#rust_source_path='/Users/tmcw/.multirust/toolchains/
 function! neoformat#formatters#javascript#prettier() abort
     return {
         \ 'exe': './node_modules/.bin/prettier',
-        \ 'args': ['--stdin', '--single-quote'],
         \ 'stdin': 1,
         \ }
 endfunction
