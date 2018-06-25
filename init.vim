@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
+Plug 'wakatime/vim-wakatime'
 Plug 'justinmk/vim-dirvish'
 
 " Git
@@ -10,10 +11,14 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mattn/gist-vim'
 
 " JavaScript
+Plug 'pangloss/vim-javascript'
 Plug 'gavocanov/vim-js-indent'
 Plug 'mxw/vim-jsx'
-Plug 'sheerun/vim-polyglot'
 Plug 'sbdchd/neoformat'
+Plug 'leafgarland/typescript-vim'
+
+" Completion
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Searching
 Plug 'mhinz/vim-grepper'
@@ -21,41 +26,45 @@ Plug 'junegunn/fzf'
 
 " VimScript Utilities
 Plug 'mattn/webapi-vim'
+
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
+
+" Syntax
+Plug 'tmcw/vim-eslint-compiler'
+
 " color schemes
-Plug 'AlessandroYorba/Alduin'
+Plug 'nanotech/jellybeans.vim'
+Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
+Plug 'reedes/vim-colors-pencil'
+Plug 'rakr/vim-one'
+Plug 'juanedi/predawn.vim'
+Plug 'cocopon/iceberg.vim'
+Plug 'mhinz/vim-janah'
+Plug 'noahfrederick/vim-hemisu'
+
 Plug 'davidoc/taskpaper.vim'
-Plug 'autozimu/LanguageClient-neovim', {
-\ 'branch': 'next',
-\ 'do': 'bash install.sh',
-\ }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
 " Languages
 Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
+" Plug 'fatih/vim-go', { 'for': ['go'] }
+" Plug 'tikhomirov/vim-glsl'
+" Plug 'ElmCast/elm-vim', { 'for': ['elm'] }
+" Plug 'rhysd/vim-wasm'
+" Clojure
+" Plug 'venantius/vim-cljfmt'
+" Plug 'tpope/vim-fireplace'
+" Plug 'guns/vim-clojure-static'
 
 call plug#end()
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
-
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" automatically open and close the popup menu / preview window
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-
-autocmd! BufWritePost ~/.config/nvim/init.vim so ~/.config/nvim/init.vim"  " Automatically reload vimrc when it's saved
-
-" let g:ale_fix_on_save = 1
-" let g:ale_fixers = { 'javascript': ['prettier'] }
-let g:ale_completion_enabled = 1
-" let g:ale_set_highlights = 1
-" let g:ale_javascript_prettier_use_local_config = 1
-" let g:ale_javascript_eslint_use_local_config = 1
 
 " fast tab moving
 nnoremap <C-k> :tabnext<CR>
@@ -82,11 +91,11 @@ nmap <leader>a :GrepperRg
 
 autocmd BufNewFile,BufRead *.json set filetype=javascript
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.wah set filetype=ast
 autocmd BufWinLeave * call clearmatches()
 
 " modernity
 " use mouse for whatever
-set ttyfast
 set mouse=a
 
 set shiftwidth=2
@@ -121,7 +130,7 @@ let $PATH .= ':node_modules/.bin/:/Users/tmcw/.cargo/bin/'
 set termguicolors
 set statusline=%f%{fugitive#statusline()}
 set background=dark
-colorscheme alduin " also good: jellybeans alduin
+colorscheme jellybeans
 
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1
@@ -153,16 +162,14 @@ function! TogglePrettier()
 endfunction
 
 " Rust -------------------------------------------------------------------------
-" let g:LanguageClient_serverCommands = {
-" \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-" \ 'javascript': ['javascript-typescript-stdio']
-" \ }
-" let g:LanguageClient_loggingLevel = 'DEBUG'
+let g:rustfmt_autosave = 1
+let g:deoplete#sources#rust#racer_binary='/Users/tmcw/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/Users/tmcw/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust'
 
-let g:neoformat_enabled_javascript = ['prettier']
 function! neoformat#formatters#javascript#prettier() abort
     return {
         \ 'exe': './node_modules/.bin/prettier',
+        \ 'args': ['--stdin', '--single-quote'],
         \ 'stdin': 1,
         \ }
 endfunction
@@ -174,6 +181,13 @@ let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 
 " Elm
+" let g:elm_format_autosave = 1
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+
 set shell=/usr/local/bin/zsh
 
 let g:grepper = {}
