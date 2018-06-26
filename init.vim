@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'justinmk/vim-dirvish'
+Plug 'tpope/vim-vinegar'
 
 " Git
 Plug 'tpope/vim-rhubarb'
@@ -10,14 +11,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mattn/gist-vim'
 
 " JavaScript
-Plug 'pangloss/vim-javascript'
 Plug 'gavocanov/vim-js-indent'
-Plug 'mxw/vim-jsx'
 Plug 'sbdchd/neoformat'
-Plug 'leafgarland/typescript-vim'
 
 " Completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Searching
 Plug 'mhinz/vim-grepper'
@@ -26,14 +23,14 @@ Plug 'junegunn/fzf'
 " VimScript Utilities
 Plug 'mattn/webapi-vim'
 
+Plug 'ervandew/supertab'
+
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 
-" Syntax
-Plug 'tmcw/vim-eslint-compiler'
+Plug 'sheerun/vim-polyglot'
 
 " color schemes
 Plug 'nanotech/jellybeans.vim'
@@ -46,24 +43,12 @@ Plug 'cocopon/iceberg.vim'
 Plug 'mhinz/vim-janah'
 Plug 'noahfrederick/vim-hemisu'
 
-Plug 'davidoc/taskpaper.vim'
-
 " Languages
 Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
-" Plug 'w0rp/ale'
-" Plug 'fatih/vim-go', { 'for': ['go'] }
-" Plug 'tikhomirov/vim-glsl'
-" Plug 'ElmCast/elm-vim', { 'for': ['elm'] }
-" Plug 'rhysd/vim-wasm'
-" Clojure
-" Plug 'venantius/vim-cljfmt'
-" Plug 'tpope/vim-fireplace'
-" Plug 'guns/vim-clojure-static'
+Plug 'w0rp/ale'
 
 call plug#end()
 
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
 
 " fast tab moving
 nnoremap <C-k> :tabnext<CR>
@@ -82,9 +67,8 @@ nnoremap <Leader>Q :qa<CR>
 " editing
 nnoremap <leader>f :call TogglePrettier()<CR>
 
-" never engage ex mode
-" http://www.bestofvim.com/tip/leave-ex-mode-good/
 nnoremap Q <nop>
+" never engage ex mode
 
 nmap <leader>a :GrepperRg 
 
@@ -94,27 +78,19 @@ autocmd BufRead,BufNewFile *.wah set filetype=ast
 autocmd BufWinLeave * call clearmatches()
 
 " modernity
-" use mouse for whatever
 set mouse=a
-
 set shiftwidth=2
 set visualbell
 set noerrorbells
 set number
 set noincsearch
 
-" performance: don't highlight beyond 400 columns
-set synmaxcol=400
+set synmaxcol=400                   " performance: don't highlight beyond 400 columns
+set colorcolumn=81                  " style: show the 81th line
+set nowrap                          " never wrap text
+set autoread                        " auto-reload updated files
 
-" style: show the 81th line
-set colorcolumn=81
-" never wrap text
-set nowrap
-
-" auto-reload updated files
-set autoread
-
-" safety: ever backup. I know it's wrong
+" safety: never backup. I know it's wrong
 set nobackup
 set noswapfile
 
@@ -160,11 +136,6 @@ function! TogglePrettier()
     endif
 endfunction
 
-" Rust -------------------------------------------------------------------------
-let g:rustfmt_autosave = 1
-let g:deoplete#sources#rust#racer_binary='/Users/tmcw/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/Users/tmcw/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust'
-
 function! neoformat#formatters#javascript#prettier() abort
     return {
         \ 'exe': './node_modules/.bin/prettier',
@@ -178,13 +149,10 @@ let g:neoformat_only_msg_on_error = 1
 let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 
-" Elm
-" let g:elm_format_autosave = 1
-
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " automatically open and close the popup menu / preview window
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+" au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
 set shell=/usr/local/bin/zsh
 
@@ -203,3 +171,6 @@ autocmd BufReadPost quickfix noremap <silent> <buffer> v  <C-w><CR><C-w>H<C-W>b<
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_fenced_languages = ['js=javascript']
 let g:vim_markdown_frontmatter = 1
+
+" only lint files when i save
+let g:ale_lint_on_text_changed = 'never'
