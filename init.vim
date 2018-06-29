@@ -12,9 +12,6 @@ Plug 'mattn/gist-vim'
 
 " JavaScript
 Plug 'gavocanov/vim-js-indent'
-Plug 'sbdchd/neoformat'
-
-" Completion
 
 " Searching
 Plug 'mhinz/vim-grepper'
@@ -29,7 +26,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
-
 Plug 'sheerun/vim-polyglot'
 
 " color schemes
@@ -50,31 +46,9 @@ Plug 'w0rp/ale'
 call plug#end()
 
 
-" fast tab moving
-nnoremap <C-k> :tabnext<CR>
-nnoremap <C-j> :tabprevious<CR>
-
-" next pane
-nnoremap <C-l> <C-w><C-w>
-nnoremap <C-p> :FZF<CR>
-
-" saving
-nnoremap <Leader>w :update<CR>
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>c :ccl<CR>
-nnoremap <Leader>Q :qa<CR>
-
-" editing
-nnoremap <leader>f :call TogglePrettier()<CR>
-
-nnoremap Q <nop>
-" never engage ex mode
 
 nmap <leader>a :GrepperRg 
 
-autocmd BufNewFile,BufRead *.json set filetype=javascript
-autocmd BufRead,BufNewFile *.md set filetype=markdown
-autocmd BufRead,BufNewFile *.wah set filetype=ast
 autocmd BufWinLeave * call clearmatches()
 
 " modernity
@@ -88,7 +62,7 @@ set noincsearch
 set synmaxcol=400                   " performance: don't highlight beyond 400 columns
 set colorcolumn=81                  " style: show the 81th line
 set nowrap                          " never wrap text
-set autoread                        " auto-reload updated files
+" set autoread                        " auto-reload updated files
 
 " safety: never backup. I know it's wrong
 set nobackup
@@ -97,11 +71,12 @@ set noswapfile
 set wildmenu
 set wildignore+=node_modules
 set splitright
-set ttimeout
-set ttimeoutlen=0
+
+" Re-enable if Escape issue recurs
+" set ttimeout
+" set ttimeoutlen=0
 
 " Appearance
-let $PATH .= ':node_modules/.bin/:/Users/tmcw/.cargo/bin/'
 set termguicolors
 set statusline=%f%{fugitive#statusline()}
 set background=dark
@@ -111,39 +86,11 @@ colorscheme jellybeans
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_flow = 1
 
-" mxw/vim-jsx
-let g:jsx_ext_required = 0
-
 " Disable netrw
 let loaded_netrwPlugin = 1
 augroup my_dirvish_events
   autocmd FileType dirvish sort r /[^\/]$/
 augroup END
-
-" Prettier
-function! TogglePrettier()
-    if !exists('#PrettierAutoGroup#BufWritePre')
-        echo "autoformat on"
-        augroup PrettierAutoGroup
-            autocmd!
-            autocmd BufWritePre *.js Neoformat
-        augroup END
-    else
-        echo "autoformat off"
-        augroup PrettierAutoGroup
-            autocmd!
-        augroup END
-    endif
-endfunction
-
-function! neoformat#formatters#javascript#prettier() abort
-    return {
-        \ 'exe': './node_modules/.bin/prettier',
-        \ 'stdin': 1,
-        \ }
-endfunction
-
-let g:neoformat_only_msg_on_error = 1
 
 " Configure Gist
 let g:gist_clip_command = 'pbcopy'
@@ -167,10 +114,25 @@ autocmd BufReadPost quickfix noremap <silent> <buffer> t  <C-w><CR><C-w>T
 autocmd BufReadPost quickfix noremap <silent> <buffer> T  <C-w><CR><C-w>TgT<C-W><C-W>
 autocmd BufReadPost quickfix noremap <silent> <buffer> v  <C-w><CR><C-w>H<C-W>b<C-W>J<C-W>t
 
-" vim markdown
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_fenced_languages = ['js=javascript']
-let g:vim_markdown_frontmatter = 1
-
 " only lint files when i save
-let g:ale_lint_on_text_changed = 'never'
+" let g:ale_lint_on_text_changed = 'never'
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_use_local_config = 1
+
+" Mappings
+" --------
+" fast tab moving
+nnoremap <C-k> :tabnext<CR>
+nnoremap <C-j> :tabprevious<CR>
+" next pane
+nnoremap <C-l> <C-w><C-w>
+nnoremap <C-p> :FZF<CR>
+" saving
+nnoremap <Leader>w :update<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>c :ccl<CR>
+nnoremap <Leader>Q :qa<CR>
+nnoremap Q <nop>
+" toggle prettier
+nnoremap <Leader>f :let g:ale_fix_on_save = !g:ale_fix_on_save<CR>
+" never engage ex mode
