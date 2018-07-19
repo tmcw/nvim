@@ -15,7 +15,8 @@ Plug 'gavocanov/vim-js-indent'
 
 " Searching
 Plug 'mhinz/vim-grepper'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " VimScript Utilities
 Plug 'mattn/webapi-vim'
@@ -45,8 +46,6 @@ Plug 'w0rp/ale'
 
 call plug#end()
 
-
-
 nmap <leader>a :GrepperRg 
 
 autocmd BufWinLeave * call clearmatches()
@@ -68,7 +67,6 @@ set nowrap                          " never wrap text
 set nobackup
 set noswapfile
 
-set wildmenu
 set wildignore+=node_modules
 set splitright
 
