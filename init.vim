@@ -29,16 +29,17 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'sheerun/vim-polyglot'
 
+Plug 'easymotion/vim-easymotion'
+
 " color schemes
-Plug 'nanotech/jellybeans.vim'
 Plug 'chriskempson/base16-vim'
-Plug 'morhetz/gruvbox'
-Plug 'reedes/vim-colors-pencil'
 Plug 'rakr/vim-one'
-Plug 'juanedi/predawn.vim'
 Plug 'cocopon/iceberg.vim'
-Plug 'mhinz/vim-janah'
 Plug 'noahfrederick/vim-hemisu'
+Plug 'junegunn/seoul256.vim'
+Plug 'rakr/vim-two-firewatch'
+Plug 'bluz71/vim-moonfly-colors'
+Plug 'atelierbram/Base2Tone-vim'
 
 " Languages
 Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
@@ -78,7 +79,7 @@ set splitright
 set termguicolors
 set statusline=%f%{fugitive#statusline()}
 set background=dark
-colorscheme jellybeans
+colo two-firewatch
 
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1
@@ -124,7 +125,7 @@ nnoremap <C-k> :tabnext<CR>
 nnoremap <C-j> :tabprevious<CR>
 " next pane
 nnoremap <C-l> <C-w><C-w>
-nnoremap <C-p> :FZF<CR>
+nnoremap <C-p> :Files<CR>
 " saving
 nnoremap <Leader>w :update<CR>
 nnoremap <Leader>q :q<CR>
