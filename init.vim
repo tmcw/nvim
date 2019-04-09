@@ -12,42 +12,36 @@ Plug 'mattn/gist-vim'
 
 " JavaScript
 Plug 'gavocanov/vim-js-indent'
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
 
 " Searching
 Plug 'mhinz/vim-grepper'
+" Plug 'wincent/ferret'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " VimScript Utilities
 Plug 'mattn/webapi-vim'
 
-Plug 'ervandew/supertab'
-
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
-Plug 'sheerun/vim-polyglot'
-
-Plug 'easymotion/vim-easymotion'
 
 " color schemes
 Plug 'chriskempson/base16-vim'
-Plug 'rakr/vim-one'
 Plug 'cocopon/iceberg.vim'
-Plug 'noahfrederick/vim-hemisu'
 Plug 'junegunn/seoul256.vim'
 Plug 'rakr/vim-two-firewatch'
-Plug 'bluz71/vim-moonfly-colors'
 Plug 'atelierbram/Base2Tone-vim'
+Plug 'bluz71/vim-moonfly-colors'
+Plug 'robertmeta/nofrils'
+Plug 'Lokaltog/vim-monotone'
 
-" Languages
-Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
 Plug 'w0rp/ale'
 
 call plug#end()
-
-nmap <leader>a :GrepperRg 
 
 autocmd BufWinLeave * call clearmatches()
 
@@ -62,7 +56,6 @@ set noincsearch
 set synmaxcol=400                   " performance: don't highlight beyond 400 columns
 set colorcolumn=81                  " style: show the 81th line
 set nowrap                          " never wrap text
-" set autoread                        " auto-reload updated files
 
 " safety: never backup. I know it's wrong
 set nobackup
@@ -71,19 +64,15 @@ set noswapfile
 set wildignore+=node_modules
 set splitright
 
-" Re-enable if Escape issue recurs
-" set ttimeout
-" set ttimeoutlen=0
-
 " Appearance
 set termguicolors
 set statusline=%f%{fugitive#statusline()}
 set background=dark
-colo two-firewatch
+colorscheme two-firewatch
 
 " vim-javascript
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_flow = 1
+" let g:javascript_plugin_jsdoc = 1
+" let g:javascript_plugin_flow = 1
 
 " Disable netrw
 let loaded_netrwPlugin = 1
@@ -95,6 +84,7 @@ augroup END
 let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " automatically open and close the popup menu / preview window
@@ -114,7 +104,7 @@ autocmd BufReadPost quickfix noremap <silent> <buffer> T  <C-w><CR><C-w>TgT<C-W>
 autocmd BufReadPost quickfix noremap <silent> <buffer> v  <C-w><CR><C-w>H<C-W>b<C-W>J<C-W>t
 
 " only lint files when i save
-" let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_text_changed = 'never'
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
 
@@ -129,9 +119,11 @@ nnoremap <C-p> :Files<CR>
 " saving
 nnoremap <Leader>w :update<CR>
 nnoremap <Leader>q :q<CR>
+nnoremap <Leader>s :wq<CR>
 nnoremap <Leader>c :ccl<CR>
 nnoremap <Leader>Q :qa<CR>
 nnoremap Q <nop>
+nmap <leader>a :GrepperRg 
 " toggle prettier
 nnoremap <Leader>f :let g:ale_fix_on_save = !g:ale_fix_on_save<CR>
-" never engage ex mode
+" nmap <silent> <leader>e :ALENext<cr>
