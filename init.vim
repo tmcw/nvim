@@ -6,9 +6,7 @@ Plug 'tpope/vim-vinegar'
 " Git
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-eunuch'
 Plug 'airblade/vim-gitgutter'
-Plug 'mattn/gist-vim'
 
 " JavaScript
 Plug 'gavocanov/vim-js-indent'
@@ -17,13 +15,11 @@ Plug 'maxmellon/vim-jsx-pretty'
 
 " Searching
 Plug 'mhinz/vim-grepper'
-" Plug 'wincent/ferret'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " VimScript Utilities
 Plug 'mattn/webapi-vim'
-
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
@@ -38,12 +34,10 @@ Plug 'atelierbram/Base2Tone-vim'
 Plug 'bluz71/vim-moonfly-colors'
 Plug 'robertmeta/nofrils'
 Plug 'Lokaltog/vim-monotone'
-
 Plug 'w0rp/ale'
 
 call plug#end()
 
-autocmd BufWinLeave * call clearmatches()
 
 " modernity
 set mouse=a
@@ -52,22 +46,18 @@ set visualbell
 set noerrorbells
 set number
 set noincsearch
-
 set synmaxcol=400                   " performance: don't highlight beyond 400 columns
 set colorcolumn=81                  " style: show the 81th line
 set nowrap                          " never wrap text
-
-" safety: never backup. I know it's wrong
 set nobackup
 set noswapfile
-
 set wildignore+=node_modules
 set splitright
-
-" Appearance
 set termguicolors
 set statusline=%f%{fugitive#statusline()}
 set background=dark
+set shell=/usr/local/bin/zsh
+
 colorscheme two-firewatch
 
 " vim-javascript
@@ -80,43 +70,28 @@ augroup my_dirvish_events
   autocmd FileType dirvish sort r /[^\/]$/
 augroup END
 
-" Configure Gist
-let g:gist_clip_command = 'pbcopy'
-let g:gist_detect_filetype = 1
-
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" automatically open and close the popup menu / preview window
-" au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-
-set shell=/usr/local/bin/zsh
-
 let g:grepper = {}
 let g:grepper.tools = ['rg']
 let g:grepper.simple_prompt = 1
 let g:grepper.quickfix = 1
 let g:grepper.highlight = 1
+let g:ale_lint_on_text_changed = 'never' " only lint files when i save
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_use_local_config = 1
 
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+autocmd BufWinLeave * call clearmatches()
 autocmd BufReadPost quickfix noremap <silent> <buffer> o  <CR>
 autocmd BufReadPost quickfix noremap <silent> <buffer> t  <C-w><CR><C-w>T
 autocmd BufReadPost quickfix noremap <silent> <buffer> T  <C-w><CR><C-w>TgT<C-W><C-W>
 autocmd BufReadPost quickfix noremap <silent> <buffer> v  <C-w><CR><C-w>H<C-W>b<C-W>J<C-W>t
 
-" only lint files when i save
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_fix_on_save = 1
-let g:ale_javascript_prettier_use_local_config = 1
-
 " Mappings
-" --------
-" fast tab moving
 nnoremap <C-k> :tabnext<CR>
 nnoremap <C-j> :tabprevious<CR>
-" next pane
 nnoremap <C-l> <C-w><C-w>
 nnoremap <C-p> :Files<CR>
-" saving
 nnoremap <Leader>w :update<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>s :wq<CR>
@@ -126,4 +101,3 @@ nnoremap Q <nop>
 nmap <leader>a :GrepperRg 
 " toggle prettier
 nnoremap <Leader>f :let g:ale_fix_on_save = !g:ale_fix_on_save<CR>
-" nmap <silent> <leader>e :ALENext<cr>
