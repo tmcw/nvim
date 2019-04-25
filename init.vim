@@ -7,11 +7,13 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'rhysd/git-messenger.vim'
 
 " JavaScript
 Plug 'gavocanov/vim-js-indent'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'hail2u/vim-css3-syntax'
 
 " Searching
 Plug 'mhinz/vim-grepper'
@@ -28,6 +30,7 @@ Plug 'tpope/vim-sleuth'
 " color schemes
 Plug 'chriskempson/base16-vim'
 Plug 'cocopon/iceberg.vim'
+Plug 'rakr/vim-one'
 Plug 'junegunn/seoul256.vim'
 Plug 'rakr/vim-two-firewatch'
 Plug 'atelierbram/Base2Tone-vim'
@@ -41,6 +44,7 @@ call plug#end()
 
 " modernity
 set mouse=a
+set shortmess=I
 set shiftwidth=2
 set visualbell
 set noerrorbells
@@ -54,7 +58,7 @@ set noswapfile
 set wildignore+=node_modules
 set splitright
 set termguicolors
-set statusline=%f%{fugitive#statusline()}
+set statusline=%f\ \ %{fugitive#head()}
 set background=dark
 set shell=/usr/local/bin/zsh
 
