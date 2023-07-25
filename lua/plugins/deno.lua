@@ -1,3 +1,5 @@
+-- Try and enable the Deno LSP when in a Deno
+-- folder, and TypeScript in a TS folder.
 return {
   {
     "neovim/nvim-lspconfig",
