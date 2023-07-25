@@ -11,6 +11,7 @@ return {
           theme = "auto",
           globalstatus = true,
           disabled_filetypes = { statusline = { "dashboard", "alpha" } },
+          icons_enabled = false,
         },
         sections = {
           lualine_a = {
