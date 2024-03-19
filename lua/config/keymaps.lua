@@ -13,10 +13,11 @@ vim.keymap.set("n", "<C-p>", function()
 end, { desc = "Find files" })
 
 vim.keymap.set("n", "<C-o>", function()
-  require("telescope.builtin").live_grep()
+  require("telescope").extensions.live_grep_args.live_grep_args()
 end, { desc = "Grep files" })
 
-vim.keymap.set("n", "-", "<cmd>Neotree toggle<CR>", { desc = "Neotree", remap = true })
+-- vim.keymap.set("n", "-", "<cmd>Neotree toggle<CR>", { desc = "Neotree", remap = true })
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 vim.keymap.set(
   "n",
@@ -24,3 +25,8 @@ vim.keymap.set(
   '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
   { silent = true }
 )
+
+vim.keymap.set("n", "<leader>ghm", function()
+  local gs = package.loaded.gitsigns
+  gs.diffthis("main")
+end, { desc = "Diff this against main" })

@@ -2,7 +2,7 @@
 -- Mostly slows down my usual workflows.
 return {
   {
-    "goolord/alpha-nvim",
+    "nvimdev/dashboard-nvim",
     enabled = false,
   },
 }

@@ -11,10 +11,14 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import any extras modules here
-    -- { import = "lazyvim.pluginhttps://github.com/placemark/togeojson/commit/cc30a8b751d8470d89d686898bfee0b7f0e5e07bs.extras.lang.typescript" },
+    -- { import = "lazyvim.plugins.extras.lang.typescript" },
+    { import = "lazyvim.plugins.extras.formatting.prettier" },
+    { import = "lazyvim.plugins.extras.lang.markdown" },
     -- { import = "lazyvim.plugins.extras.lang.json" },
     -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
     -- import/override with your plugins
+    -- prettierd seems borked.
+    { import = "lazyvim.plugins.extras.test.core" },
     { import = "plugins" },
   },
   defaults = {

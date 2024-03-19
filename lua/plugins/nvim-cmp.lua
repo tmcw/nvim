@@ -4,6 +4,7 @@ return {
     version = false, -- last release is way too old
     event = "InsertEnter",
     dependencies = {
+      "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -17,6 +18,9 @@ return {
         completion = {
           completeopt = "menu,menuone,noinsert,noselect",
         },
+        enabled = function()
+          return (vim.bo.ft ~= "markdown")
+        end,
         preselect = "none",
         snippet = {
           expand = function(args)
@@ -43,6 +47,7 @@ return {
           { name = "luasnip" },
           { name = "buffer" },
           { name = "path" },
+          { name = "nvim_lsp_signature_help" },
         }),
         experimental = {
           ghost_text = {
