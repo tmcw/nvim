@@ -7,6 +7,8 @@ return {
       view_options = {
         show_hidden = true,
       },
+      -- Hide icon column
+      columns = {},
     },
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
