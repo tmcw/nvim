@@ -11,6 +11,6 @@ return {
       columns = {},
     },
     -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 }

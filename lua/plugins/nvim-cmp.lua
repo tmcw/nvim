@@ -42,11 +42,11 @@ return {
           { name = "path" },
           { name = "nvim_lsp_signature_help" },
         }),
-        experimental = {
-          ghost_text = {
-            hl_group = "CmpGhostText",
-          },
-        },
+        -- experimental = {
+        --   ghost_text = {
+        --     hl_group = "CmpGhostText",
+        --   },
+        -- },
         sorting = defaults.sorting,
       }
     end,

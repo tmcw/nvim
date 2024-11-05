@@ -19,6 +19,7 @@ return {
         defaults = {
           -- theme = "ivy",
           color_devicons = false,
+          disable_devicons = true,
           layout_strategy = "bottom_pane",
           sorting_strategy = "ascending",
           layout_config = {

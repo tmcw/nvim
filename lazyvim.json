@@ -1,9 +1,9 @@
 {
   "extras": [
-
+    "lazyvim.plugins.extras.editor.overseer"
   ],
   "news": {
-    "NEWS.md": "4964"
+    "NEWS.md": "6520"
   },
-  "version": 5
+  "version": 6
 }

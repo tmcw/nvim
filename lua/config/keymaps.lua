@@ -1,3 +1,4 @@
+-- local wk = require("which-key")
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
@@ -30,3 +31,25 @@ vim.keymap.set("n", "<leader>ghm", function()
   local gs = package.loaded.gitsigns
   gs.diffthis("main")
 end, { desc = "Diff this against main" })
+
+vim.keymap.set("n", "<leader>ua", function()
+  if vim.o.background == "dark" then
+    print("Switching to light mode")
+    vim.cmd("set background=light")
+    vim.cmd("colorscheme PaperColor")
+  else
+    print("Switching to dark mode")
+    vim.cmd("set background=dark")
+    vim.cmd("colorscheme oxocarbon")
+  end
+end, { desc = "Toggle light dark mode" })
+
+-- wk.register({
+--   cv = {
+--     name = "VtsExec actions",
+--     s = { "<CMD>VtsExec sort_imports<CR>", "Sort imports" },
+--     r = { "<CMD>VtsExec remove_unused<CR>", "Remove unused" },
+--     a = { "<CMD>VtsExec add_missing_exports<CR>", "Add missing exports" },
+--     v = { "<CMD>VtsExec source_actions<CR>", "Source actions" },
+--   },
+-- }, { prefix = "<leader>" })
