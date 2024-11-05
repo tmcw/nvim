@@ -26,9 +26,11 @@ end, {
   bang = true,
 })
 
+-- Using conform.nvim and trying to get LSP formatters _not_ to
+-- run because they always clobber my extmarks
 return {
   "stevearc/conform.nvim",
-  enabled = false,
+  enabled = true,
   dependencies = { "mason.nvim" },
   opts = {
     formatters_by_ft = {
