@@ -43,13 +43,3 @@ vim.keymap.set("n", "<leader>ua", function()
     vim.cmd("colorscheme oxocarbon")
   end
 end, { desc = "Toggle light dark mode" })
-
--- wk.register({
---   cv = {
---     name = "VtsExec actions",
---     s = { "<CMD>VtsExec sort_imports<CR>", "Sort imports" },
---     r = { "<CMD>VtsExec remove_unused<CR>", "Remove unused" },
---     a = { "<CMD>VtsExec add_missing_exports<CR>", "Add missing exports" },
---     v = { "<CMD>VtsExec source_actions<CR>", "Source actions" },
---   },
--- }, { prefix = "<leader>" })
