@@ -10,11 +10,11 @@ vim.keymap.set("n", "<C-k>", "<cmd>tabnext<cr>", { desc = "Next Tab quick", rema
 vim.keymap.set("n", "<C-j>", "<cmd>tabprev<cr>", { desc = "Previous Tab quick", remap = true })
 
 vim.keymap.set("n", "<C-p>", function()
-  require("telescope.builtin").find_files()
+  require("fzf-lua").files()
 end, { desc = "Find files" })
 
 vim.keymap.set("n", "<C-o>", function()
-  require("telescope").extensions.live_grep_args.live_grep_args()
+  require("fzf-lua").live_grep()
 end, { desc = "Grep files" })
 
 -- vim.keymap.set("n", "-", "<cmd>Neotree toggle<CR>", { desc = "Neotree", remap = true })

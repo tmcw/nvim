@@ -35,13 +35,16 @@ return {
   {
     "vim-paper",
     name = "vim-paper",
-    dev = { true }
+    dev = { true },
   },
   {
     "Shatur/neovim-ayu",
   },
   {
     "atelierbram/Base2Tone-nvim",
+  },
+  {
+    "ribru17/bamboo.nvim",
   },
   {
     "LazyVim/LazyVim",
