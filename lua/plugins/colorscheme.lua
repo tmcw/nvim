@@ -32,6 +32,7 @@ return {
   -- {
   --   "NLKNguyen/papercolor-theme",
   -- },
+  { "miikanissi/modus-themes.nvim", priority = 1000 },
   {
     "vim-paper",
     name = "vim-paper",
@@ -39,18 +40,20 @@ return {
   },
   {
     "Shatur/neovim-ayu",
+    priority = 1000,
   },
-  {
-    "atelierbram/Base2Tone-nvim",
-  },
+  -- {
+  --   "atelierbram/Base2Tone-nvim",
+  --   priority = 1000,
+  -- },
   {
     "ribru17/bamboo.nvim",
+    priority = 1000,
   },
   {
     "LazyVim/LazyVim",
     opts = {
-      -- colorscheme = vim.fn.getenv("ITERM_PROFILE") == "Light" and "ayu" or "tokyonight-moon",
-      colorscheme = "paper",
+      colorscheme = vim.fn.getenv("ITERM_PROFILE") == "Light" and "paper" or "modus",
     },
   },
 }

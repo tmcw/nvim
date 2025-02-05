@@ -7,9 +7,9 @@ return {
   opts = {
     formatters_by_ft = {
       json = { "biome" },
-      javascript = { "prettier", "biome", stop_after_first = true },
-      typescriptreact = { "prettier", "biome", stop_after_first = true },
-      typescript = { "prettier", "biome", stop_after_first = true },
+      javascript = { "biome", stop_after_first = true },
+      typescriptreact = { "biome", stop_after_first = true },
+      typescript = { "biome", stop_after_first = true },
     },
   },
 }

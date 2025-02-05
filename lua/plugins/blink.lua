@@ -9,6 +9,7 @@ return {
   "saghen/blink.cmp",
   version = not vim.g.lazyvim_blink_main and "*",
   build = vim.g.lazyvim_blink_main and "cargo build --release",
+
   opts_extend = {
     "sources.completion.enabled_providers",
     "sources.compat",
@@ -29,6 +30,11 @@ return {
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
+    enabled = function()
+      -- Disable on Markdown files
+      local disabled_filetypes = { "markdown" }
+      return not vim.tbl_contains(disabled_filetypes, vim.bo.filetype)
+    end,
     snippets = {
       expand = function(snippet, _)
         return LazyVim.cmp.expand(snippet)
@@ -101,20 +107,20 @@ return {
     end
 
     -- add ai_accept to <Tab> key
-    if not opts.keymap["<Tab>"] then
-      if opts.keymap.preset == "super-tab" then -- super-tab
-        opts.keymap["<Tab>"] = {
-          require("blink.cmp.keymap.presets")["super-tab"]["<Tab>"][1],
-          LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
-          "fallback",
-        }
-      else -- other presets
-        opts.keymap["<Tab>"] = {
-          LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
-          "fallback",
-        }
-      end
-    end
+    -- if not opts.keymap["<Tab>"] then
+    --   if opts.keymap.preset == "super-tab" then -- super-tab
+    --     opts.keymap["<Tab>"] = {
+    --       require("blink.cmp.keymap.presets")["super-tab"]["<Tab>"][1],
+    --       LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
+    --       "fallback",
+    --     }
+    --   else -- other presets
+    --     opts.keymap["<Tab>"] = {
+    --       LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
+    --       "fallback",
+    --     }
+    --   end
+    -- end
 
     -- Unset custom prop to pass blink.cmp validation
     opts.sources.compat = nil

@@ -8,5 +8,6 @@ opt.conceallevel = 0
 opt.swapfile = false
 opt.exrc = true
 vim.g.lazyvim_prettier_needs_config = true
+vim.g.lazyvim_picker = "snacks"
 
 opt.background = vim.fn.getenv("ITERM_PROFILE") == "Light" and "light" or "dark"
