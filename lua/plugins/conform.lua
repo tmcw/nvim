@@ -6,6 +6,7 @@ return {
   dependencies = { "mason.nvim" },
   opts = {
     formatters_by_ft = {
+      python = { "ruff_format" },
       json = { "biome" },
       javascript = { "biome", stop_after_first = true },
       typescriptreact = { "biome", stop_after_first = true },
