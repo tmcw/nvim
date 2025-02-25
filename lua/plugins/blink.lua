@@ -84,8 +84,8 @@ return {
         -- "snippets",
         "buffer",
       },
-      cmdline = {},
     },
+    cmdline = { enabled = false },
 
     keymap = {
       preset = "super-tab",

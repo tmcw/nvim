@@ -11,7 +11,19 @@ return {
     scroll = {
       enabled = false,
     },
+    ---@class snacks.picker.Config
     picker = {
+      icons = {
+        files = {
+          enabled = false,
+        },
+      },
+      ---@class snacks.picker.formatters.Config
+      formatters = {
+        file = {
+          -- filename_first = true,
+        },
+      },
       win = {
         input = {
           keys = {

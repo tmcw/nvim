@@ -36,7 +36,7 @@ return {
   {
     "vim-paper",
     name = "vim-paper",
-    dev = { true },
+    dir = "~/projects/vim-paper",
   },
   {
     "Shatur/neovim-ayu",
@@ -48,6 +48,10 @@ return {
   -- },
   {
     "ribru17/bamboo.nvim",
+    priority = 1000,
+  },
+  {
+    "nyoom-engineering/oxocarbon.nvim",
     priority = 1000,
   },
   {
