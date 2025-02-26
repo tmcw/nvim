@@ -21,4 +21,13 @@ end, {
   desc = "Re-enable autoformat-on-save",
 })
 
+-- Disable inlays by default
 vim.lsp.inlay_hint.enable(false)
+
+-- A way to open diffview that shows the same kind of diff
+-- that GitHub would show.
+vim.api.nvim_create_user_command("PRDiff", function()
+  require("diffview").open({ "origin/main...", "--imply-local" })
+end, {
+  desc = "Diff this branch against main like a PR",
+})
