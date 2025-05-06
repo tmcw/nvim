@@ -20,12 +20,12 @@ end, { desc = "Grep files" })
 -- vim.keymap.set("n", "-", "<cmd>Neotree toggle<CR>", { desc = "Neotree", remap = true })
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
-vim.keymap.set(
-  "n",
-  "<leader>gb",
-  '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
-  { silent = true }
-)
+-- vim.keymap.set(
+--   "n",
+--   "<leader>gb",
+--   '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
+--   { silent = true }
+-- )
 
 vim.keymap.set("n", "<leader>ghm", function()
   local gs = package.loaded.gitsigns
@@ -107,3 +107,21 @@ end
 vim.keymap.set("n", "<leader>cb", function()
   biome_lint()
 end, { desc = "Biome fixes" })
+
+local function preview_location_callback(_, method, result)
+  if result == nil or vim.tbl_isempty(result) then
+    vim.lsp.log.info(method, "No location found")
+    return nil
+  end
+  if vim.tbl_islist(result) then
+    vim.lsp.util.preview_location(result[1])
+  else
+    vim.lsp.util.preview_location(result)
+  end
+end
+
+function peek_definition()
+  local win = vim.api.nvim_get_current_win()
+  local params = vim.lsp.util.make_position_params(win, vim.lsp.client.offset_encoding)
+  return vim.lsp.buf_request(0, "textDocument/definition", params, preview_location_callback)
+end

@@ -17,6 +17,7 @@ return {
   },
   dependencies = {
     "rafamadriz/friendly-snippets",
+    "Kaiser-Yang/blink-cmp-git",
     -- add blink.compat to dependencies
     {
       "saghen/blink.compat",
@@ -36,11 +37,12 @@ return {
         and vim.bo.buftype ~= "prompt"
         and vim.b.completion ~= false
     end,
-    snippets = {
-      expand = function(snippet, _)
-        return LazyVim.cmp.expand(snippet)
-      end,
-    },
+    snippets = nil,
+    -- snippets = {
+    --   expand = function(snippet, _)
+    --     return LazyVim.cmp.expand(snippet)
+    --   end,
+    -- },
     appearance = {
       -- sets the fallback highlight groups to nvim-cmp's highlight groups
       -- useful for when your theme doesn't support blink.cmp
@@ -79,10 +81,20 @@ return {
       -- with blink.compat
       compat = {},
       default = {
+        "git",
         "lsp",
         "path",
         -- "snippets",
         "buffer",
+      },
+      providers = {
+        git = {
+          module = "blink-cmp-git",
+          name = "Git",
+          opts = {
+            -- options for the blink-cmp-git
+          },
+        },
       },
     },
     cmdline = { enabled = false },

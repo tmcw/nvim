@@ -1,7 +1,7 @@
 return {
   "folke/snacks.nvim",
   ---@module 'snacks.nvim'
-  ---@type snacks.Config
+  ---@class snacks.Config
   opts = {
     -- dashboard (slows down my startup)
     dashboard = {
@@ -10,6 +10,12 @@ return {
     -- animated scroll (distracting)
     scroll = {
       enabled = false,
+    },
+    ---@class snacks.indent.Config
+    indent = {
+      indent = {
+        enabled = false,
+      },
     },
     ---@class snacks.picker.Config
     picker = {

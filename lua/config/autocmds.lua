@@ -31,3 +31,10 @@ vim.api.nvim_create_user_command("PRDiff", function()
 end, {
   desc = "Diff this branch against main like a PR",
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "qf",
+  callback = function()
+    vim.keymap.set("n", "<C-t>", "<C-w><Enter><C-w>T", { buffer = true, silent = true })
+  end,
+})
