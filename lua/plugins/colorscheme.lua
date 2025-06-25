@@ -45,16 +45,21 @@ return {
     name = "vim-paper",
     dir = "~/projects/vim-paper",
   },
-  {
-    "ribru17/bamboo.nvim",
-    priority = 1000,
-  },
+  -- {
+  --   "ribru17/bamboo.nvim",
+  --   priority = 1000,
+  -- },
   {
     "nyoom-engineering/oxocarbon.nvim",
     priority = 1000,
   },
   {
     "EdenEast/nightfox.nvim",
+    priority = 1000,
+  },
+  {
+    "zootedb0t/citruszest.nvim",
+    lazy = false,
     priority = 1000,
   },
   {
@@ -82,7 +87,7 @@ return {
     opts = {
       update_interval = 5000,
       set_dark_mode = function()
-        vim.cmd("colorscheme nightfox")
+        vim.cmd("colorscheme carbonfox")
         vim.api.nvim_set_option_value("background", "dark", {})
       end,
       set_light_mode = function()

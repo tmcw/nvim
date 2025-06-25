@@ -17,6 +17,14 @@ vim.keymap.set("n", "<C-o>", function()
   require("snacks").picker.grep()
 end, { desc = "Grep files" })
 
+vim.keymap.set("n", "<C-g>", function()
+  require("snacks").picker.git_branches()
+end, { desc = "Switch git branch" })
+
+vim.keymap.set("n", "<C-s>", function()
+  require("snacks").picker.pickers()
+end, { desc = "Pick a picker" })
+
 -- vim.keymap.set("n", "-", "<cmd>Neotree toggle<CR>", { desc = "Neotree", remap = true })
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
