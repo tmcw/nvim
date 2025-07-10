@@ -133,3 +133,14 @@ function peek_definition()
   local params = vim.lsp.util.make_position_params(win, vim.lsp.client.offset_encoding)
   return vim.lsp.buf_request(0, "textDocument/definition", params, preview_location_callback)
 end
+
+vim.keymap.set({ "n", "x" }, "<leader>gY", function()
+  Snacks.gitbrowse({
+    open = function(url)
+      vim.fn.setreg("+", url)
+    end,
+    -- This is the change from the default. I want a permalink.
+    what = "permalink",
+    notify = false,
+  })
+end, { desc = "Git Browse (copy)" })
