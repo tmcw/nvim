@@ -68,28 +68,6 @@ local biome_lint = function()
   local errors = {}
   local filename, lnum, col, code, message
   for _, line in ipairs(vim.fn.split(output, "\n")) do
-    -- if fetch_message then
-    --   _, _, message = string.find(line, "%s×(.+)")
-
-    --   if message then
-    --     message = (message):gsub("^%s+×%s*", "")
-
-    --     print("Inserting into table")
-
-    --     table.insert({
-    --       source = "biomejs",
-    --       filename = filename,
-    --       type = "E",
-    --       lnum = tonumber(lnum) - 1,
-    --       col = tonumber(col),
-    --       message = message,
-    --       code = code,
-    --     })
-
-    --     fetch_message = false
-    --   end
-    -- else
-    --
     _, _, filename, lnum, col, code = string.find(line, "([^:]+):(%d+):(%d+)%s(.+)")
     print(filename, lnum, col, code)
     if lnum then
@@ -144,3 +122,7 @@ vim.keymap.set({ "n", "x" }, "<leader>gY", function()
     notify = false,
   })
 end, { desc = "Git Browse (copy)" })
+
+vim.keymap.set("i", "<M-0>", function()
+  return os.date("%Y-%m-%d")
+end, { expr = true, noremap = true, silent = true, desc = "Insert date (YYYY-MM-DD)" })

@@ -57,16 +57,16 @@ return {
     "EdenEast/nightfox.nvim",
     priority = 1000,
   },
-  {
-    "zootedb0t/citruszest.nvim",
-    priority = 1000,
-  },
-  {
-    "mvllow/modes.nvim",
-    config = function()
-      require("modes").setup()
-    end,
-  },
+  -- {
+  --   "zootedb0t/citruszest.nvim",
+  --   priority = 1000,
+  -- },
+  -- {
+  --   "mvllow/modes.nvim",
+  --   config = function()
+  --     require("modes").setup()
+  --   end,
+  -- },
   -- {
   --   "zenbones-theme/zenbones.nvim",
   --   -- Optionally install Lush. Allows for more configuration or extending the colorscheme
@@ -86,13 +86,13 @@ return {
     opts = {
       update_interval = 5000,
       set_dark_mode = function()
-        vim.cmd("colorscheme carbonfox")
+        vim.cmd("colorscheme tokyonight-moon")
         vim.api.nvim_set_option_value("background", "dark", {})
       end,
       set_light_mode = function()
         -- dayfox as secondary
         -- or paper
-        vim.cmd("colorscheme paper")
+        vim.cmd("colorscheme dayfox")
         vim.api.nvim_set_option_value("background", "light", {})
       end,
     },
