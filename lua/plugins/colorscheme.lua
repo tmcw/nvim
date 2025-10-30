@@ -57,6 +57,9 @@ return {
     "EdenEast/nightfox.nvim",
     priority = 1000,
   },
+  {
+    "everviolet/nvim",
+  },
   -- {
   --   "zootedb0t/citruszest.nvim",
   --   priority = 1000,

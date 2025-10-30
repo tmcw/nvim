@@ -21,14 +21,14 @@ return {
     end,
     keys = {
       {
-        "<leader>oo",
+        "<leader>oO",
         function()
           require("other-nvim").open()
         end,
         desc = "Open test/spec file",
       },
       {
-        "<leader>ot",
+        "<leader>oT",
         function()
           require("other-nvim").openTabNew()
         end,
