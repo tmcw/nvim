@@ -94,6 +94,11 @@ vim.keymap.set("n", "<leader>cb", function()
   biome_lint()
 end, { desc = "Biome fixes" })
 
+vim.keymap.set("n", "gD", function()
+  vim.cmd("tab split")
+  vim.lsp.buf.definition()
+end, { desc = "Go to definition in new tab" })
+
 local function preview_location_callback(_, method, result)
   if result == nil or vim.tbl_isempty(result) then
     vim.lsp.log.info(method, "No location found")

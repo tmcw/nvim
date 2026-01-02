@@ -28,6 +28,13 @@ return {
         end,
         desc = "neogit open",
       },
+      {
+        "<leader>go",
+        function()
+          require("neogit").action("branch", "checkout_branch_revision")()
+        end,
+        desc = "neogit checkout branch/revision",
+      },
     },
   },
 }
