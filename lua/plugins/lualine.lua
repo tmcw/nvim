@@ -38,7 +38,7 @@ return {
         lualine_b = { -- "branch", "diff", "diagnostics"
         },
         lualine_c = { LazyVim.lualine.pretty_path({ length = 0 }) },
-        lualine_x = {},
+        lualine_x = { "overseer" },
         lualine_y = {},
         lualine_z = { "location" },
       },

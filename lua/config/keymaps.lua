@@ -64,14 +64,12 @@ local biome_lint = function()
   if output == nil then
     return
   end
-  local fetch_message = false
   local errors = {}
-  local filename, lnum, col, code, message
+  local filename, lnum, col, code
   for _, line in ipairs(vim.fn.split(output, "\n")) do
     _, _, filename, lnum, col, code = string.find(line, "([^:]+):(%d+):(%d+)%s(.+)")
     print(filename, lnum, col, code)
     if lnum then
-      -- fetch_message = true
       print(filename)
       table.insert(errors, {
         source = "biomejs",

@@ -1,5 +1,26 @@
+local function patch_snacks_dim()
+  local ok, Win = pcall(require, "snacks.win")
+  if not ok then
+    return
+  end
+  local orig_dim = Win.dim
+  function Win:dim(parent)
+    local r = orig_dim(self, parent)
+    r.height = math.floor(r.height)
+    r.width = math.floor(r.width)
+    r.row = math.floor(r.row)
+    r.col = math.floor(r.col)
+    return r
+  end
+end
+
 return {
   "folke/snacks.nvim",
+  config = function(_, opts)
+    require("snacks").setup(opts)
+    patch_snacks_dim()
+  end,
+
   ---@module 'snacks.'
   ---@class snacks.Config
   opts = {

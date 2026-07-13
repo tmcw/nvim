@@ -10,7 +10,8 @@ return {
       "sindrets/diffview.nvim", -- optional - Diff integration
     },
     opts = {
-      -- process_spinner = true,
+      process_spinner = false,
+      auto_show_console = false,
       graph_style = "kitty",
       signs = {
         -- { CLOSED, OPENED }
