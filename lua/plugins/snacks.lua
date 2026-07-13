@@ -32,6 +32,10 @@ return {
     scroll = {
       enabled = false,
     },
+    -- notifications (replaces noice.nvim)
+    notifier = {
+      enabled = true,
+    },
     ---@class snacks.indent.Config
     -- indent = {
     --   indent = {

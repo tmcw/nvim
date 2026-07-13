@@ -13,9 +13,9 @@ vim.keymap.set("n", "<C-p>", function()
   require("snacks").picker.files()
 end, { desc = "Find files" })
 
-vim.keymap.set("n", "<C-o>", function()
+vim.keymap.set("n", "<leader>/", function()
   require("snacks").picker.grep()
-end, { desc = "Grep files" })
+end, { desc = "Grep" })
 
 vim.keymap.set("n", "<C-g>", function()
   require("snacks").picker.git_branches()
@@ -40,22 +40,10 @@ vim.keymap.set("n", "<leader>ghm", function()
   gs.diffthis("main")
 end, { desc = "Diff this against main" })
 
-vim.keymap.set("n", "<leader>ua", function()
-  if vim.o.background == "dark" then
-    print("Switching to light mode")
-    vim.cmd("set background=light")
-    vim.cmd("colorscheme PaperColor")
-  else
-    print("Switching to dark mode")
-    vim.cmd("set background=dark")
-    vim.cmd("colorscheme oxocarbon")
-  end
-end, { desc = "Toggle light dark mode" })
-
 local biome_cmd = function()
   local binary_name = "biome"
   local local_binary = vim.fn.fnamemodify("./node_modules/.bin/" .. binary_name, ":p")
-  return vim.loop.fs_stat(local_binary) and local_binary or binary_name
+  return vim.uv.fs_stat(local_binary) and local_binary or binary_name
 end
 
 local biome_lint = function()
@@ -96,24 +84,6 @@ vim.keymap.set("n", "gD", function()
   vim.cmd("tab split")
   vim.lsp.buf.definition()
 end, { desc = "Go to definition in new tab" })
-
-local function preview_location_callback(_, method, result)
-  if result == nil or vim.tbl_isempty(result) then
-    vim.lsp.log.info(method, "No location found")
-    return nil
-  end
-  if vim.tbl_islist(result) then
-    vim.lsp.util.preview_location(result[1])
-  else
-    vim.lsp.util.preview_location(result)
-  end
-end
-
-function peek_definition()
-  local win = vim.api.nvim_get_current_win()
-  local params = vim.lsp.util.make_position_params(win, vim.lsp.client.offset_encoding)
-  return vim.lsp.buf_request(0, "textDocument/definition", params, preview_location_callback)
-end
 
 vim.keymap.set({ "n", "x" }, "<leader>gY", function()
   Snacks.gitbrowse({

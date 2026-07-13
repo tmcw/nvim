@@ -38,3 +38,30 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "<C-t>", "<C-w><Enter><C-w>T", { buffer = true, silent = true })
   end,
 })
+
+-- Replaces the gist.nvim plugin with a thin `gh` CLI wrapper.
+-- Creates a private gist from the current file and copies the URL to the + register.
+vim.api.nvim_create_user_command("GistCreate", function()
+  local file = vim.fn.expand("%:p")
+  if file == "" or vim.fn.filereadable(file) == 0 then
+    vim.notify("Save the file first — gh gists from disk", vim.log.levels.WARN)
+    return
+  end
+  vim.system({ "gh", "gist", "create", file, "--private" }, { text = true }, function(obj)
+    local url = vim.trim(obj.stdout or "")
+    if obj.code ~= 0 or url == "" then
+      vim.schedule(function()
+        vim.notify("gh gist create failed: " .. (obj.stderr or "unknown error"), vim.log.levels.ERROR)
+      end)
+      return
+    end
+    vim.fn.setreg("+", url)
+    vim.schedule(function()
+      vim.notify("Private gist created (URL copied to +): " .. url)
+    end)
+  end)
+end, { desc = "Create private gist from current file, copy URL" })
+
+vim.api.nvim_create_user_command("GistsList", function()
+  vim.cmd("belowright split | terminal gh gist list")
+end, { desc = "List your gists in a terminal" })
