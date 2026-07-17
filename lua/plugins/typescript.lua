@@ -75,6 +75,10 @@ return {
       vim.lsp.config("tsgo", {
         root_dir = root_dir_if(true),
         settings = no_inlay_hints,
+        -- tsgo (experimental) desyncs Neovim's incremental LSP change-tracker,
+        -- which crashes (E5108 in vim/lsp/sync.lua) when snacks' setqflist loads
+        -- an attached buffer. Full document sync skips that codepath entirely.
+        flags = { allow_incremental_sync = false },
       })
       vim.lsp.enable("tsgo")
     end,
