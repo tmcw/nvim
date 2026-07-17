@@ -96,6 +96,52 @@ vim.keymap.set({ "n", "x" }, "<leader>gY", function()
   })
 end, { desc = "Git Browse (copy)" })
 
+-- Inspired by https://github.com/folke/snacks.nvim/discussions/1966#discussioncomment-13431851
+vim.keymap.set("n", "<space>se", function()
+  Snacks.picker.pick({
+    format = "file",
+    notify = false, -- Also prevents error when searching with additional arguments
+    show_empty = true,
+    live = true,
+    supports_live = true,
+    -- hidden = true,
+    -- ignored = true,
+    ---@param opts snacks.picker.grep.Config
+    finder = function(opts, ctx)
+      local cmd = "ast-grep"
+      local args = { "run", "--color=never", "--json=stream" }
+      if opts.hidden then
+        table.insert(args, "--no-ignore=hidden")
+      end
+      if opts.ignored then
+        table.insert(args, "--no-ignore=vcs")
+      end
+      local pattern, pargs = Snacks.picker.util.parse(ctx.filter.search)
+      table.insert(args, string.format("--pattern=%s", pattern))
+      vim.list_extend(args, pargs)
+      return require("snacks.picker.source.proc").proc(
+        vim.tbl_deep_extend("force", opts, {
+          cmd = cmd,
+          args = args,
+          transform = function(item)
+            local entry = vim.json.decode(item.text)
+            if vim.tbl_isempty(entry) then
+              return false
+            else
+              local start = entry.range.start
+              item.cwd = svim.fs.normalize(opts and opts.cwd or vim.uv.cwd() or ".") or nil
+              item.file = entry.file
+              item.line = entry.text
+              item.pos = { tonumber(start.line) + 1, tonumber(start.column) }
+            end
+          end,
+        }),
+        ctx
+      )
+    end,
+  })
+end)
+
 vim.keymap.set("i", "<M-0>", function()
   return os.date("%Y-%m-%d")
 end, { expr = true, noremap = true, silent = true, desc = "Insert date (YYYY-MM-DD)" })

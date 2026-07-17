@@ -6,7 +6,7 @@ return {
       enable_progress_notifications = false,
       use_trouble_qflist = true,
       flags = {
-        watch = true,
+        watch = false,
       },
     })
   end,
